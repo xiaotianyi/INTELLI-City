@@ -77,7 +77,7 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     hasPosition = 0
     hasName = 0
     paradic = {}
-    print "dict", dictionary
+    # print "dict", dictionary
     # print pro
     for w in li:
         word = w[0]
