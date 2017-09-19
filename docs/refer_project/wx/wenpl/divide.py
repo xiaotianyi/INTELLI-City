@@ -77,6 +77,7 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     hasPosition = 0
     hasName = 0
     paradic = {}
+    print "dict", dictionary
     # print pro
     for w in li:
         word = w[0]
@@ -348,7 +349,7 @@ def test(sentence):
         pro,
         paraCategory)  # set
     for el in sentence_result:
-        print "sentence_result", unicode(el,"utf8", errors="ignore")
+        print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     print "test point_result", point_result
     if point_result != 0:
@@ -407,8 +408,6 @@ def showReply(sentence):
     try:
         return test(sentence)
     except Exception as e:
-    #     print   "-----------------------------这是结果哦--------------------------------"
-    #     print '我好像不太明白·_·'
         return '我好像不太明白·_·'
 
 # print showReply("查询工单")
