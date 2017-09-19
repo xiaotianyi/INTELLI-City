@@ -4,18 +4,14 @@ import hashlib
 import reply
 import receive
 import web
-import json
 from wenpl.divide import showReply
-
+import json
 
 class Handle(object):
     def POST(self):
-        '''
-        给微信提供服务
-        '''
         try:
             webData = web.data()
-            print "\n\n\nHandle Post webdata is ", webData   #后台打日志
+            print "Handle Post webdata is ", webData   #后台打日志
             recMsg = receive.parse_xml(webData)
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
@@ -28,7 +24,8 @@ class Handle(object):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
-                replyMsg = reply.VoiceMsg(toUser, fromUser, content)
+                print "show vioce text", content
+		replyMsg = reply.VoiceMsg(toUser, fromUser, content)
                 return replyMsg.send()
             else:
                 print "暂且不处理"
@@ -37,9 +34,6 @@ class Handle(object):
             return Argment
 
     def GET(self):
-        '''
-        给网页端的服务
-        '''
 
         try:
             webdata=web.input()
