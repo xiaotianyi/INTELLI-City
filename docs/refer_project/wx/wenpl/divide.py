@@ -320,7 +320,7 @@ def test(sentence):
     # print "test7 devices", devices
     positions = mergePositions([cities, towns, stations, devices])
     # print "test8 positions", positions
-    points=getPoints()
+    points = getPoints()
     # print "test9 points", points
     pro = getPros()
     # print "test10 pro", pro

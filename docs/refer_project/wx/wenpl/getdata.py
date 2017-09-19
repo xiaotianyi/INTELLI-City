@@ -89,7 +89,6 @@ def getPoints():
     p = fin.read()
     jp = json.loads(p)
     generals = toUTF8(jp)
-    # print generals
     return generals
 
 
