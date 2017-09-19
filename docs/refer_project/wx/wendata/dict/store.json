@@ -15,3 +15,4 @@
 {"查询 people 通知":"/message/get_received_messages?&&keyword=&&start=&&end=&&current_page=1&&user="}
 {"查询 position time 报警":["/reports/gen_report/warnings?parent_name=","&start=","&end="]}
 {"查询 实时 stations devices points":["/data/point_info_with_real_time?station_name=","&device_name=","&point_name="]}
+{"查询 全部 工具包":["http://122.224.116.44:5005/toolkit/toolkits/public"]}
