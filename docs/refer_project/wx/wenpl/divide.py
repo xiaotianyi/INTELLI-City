@@ -214,15 +214,17 @@ def getResult(url):
     turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
+    web_flag = 0
     if url[:4] != "http":
         url = 'http://www.intellense.com:3080' + url
+        web_flag = 1
 
     print "url", url
     fin1.close()
 
     req = urllib2.Request(url)
     print "req", req
-    req.add_header('authorization', token)
+    req.add_header('authorization', token) if web_flag
     response = urllib2.urlopen(req)
     print "response", response
     # try:
