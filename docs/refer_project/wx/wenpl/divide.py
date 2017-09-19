@@ -215,7 +215,11 @@ def getResult(url):
     fin1 = open(turl, 'r+')
     token = fin1.read()
     if url[:4] != "http":
+        print '1'
         url = 'http://www.intellense.com:3080' + url
+    else:
+        print '2'
+        url = url[0]
     print "url", url
     fin1.close()
 
@@ -337,7 +341,6 @@ def test(sentence):
     para = []
     # print "test para", para
     keyphrase = pro.keys()
-    print "keys", keyphrase, len(keyphrase)
     paraDict = paraFilter(st)
     # print "test paraDict", paraDict
     date = parseDate(sentence)
@@ -345,7 +348,6 @@ def test(sentence):
     ftype=0
     remember=[]
     divide_result = divide(sentence)  # list
-    print "test divide_result", divide_result
 
     sentence_result = getQueryTypeSet(
         divide_result,
@@ -372,11 +374,11 @@ def test(sentence):
         if date != 0:
             sentence_result.append('time')
         hit_result = getPrefixHit(sentence_result, st)  # dict
-        print "hit_result", hit_result
+        # print "hit_result", hit_result
         rank_result = ranking(hit_result, sentence_result)  # dict
-        print "rank_result", rank_result
+        # print "rank_result", rank_result
         reranking_result = revranking(hit_result)
-        print "reranking_result", reranking_result
+        # print "reranking_result", reranking_result[0]
         if date != 0:
             para.append(date)
         print "para", para
