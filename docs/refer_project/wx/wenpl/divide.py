@@ -225,7 +225,7 @@ def getResult(url):
     print "req", req
     req.add_header('authorization', token)
     try:
-        response = urllib2.urlopen(req)
+        response = urllib2.urlopen(req)["message"]
         print "response", response
     except Exception as e:
         return 0
