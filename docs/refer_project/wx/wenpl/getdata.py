@@ -45,7 +45,6 @@ def getStore():
         j = json.loads(line)
         store[j.keys()[0].encode('utf-8')] = j[j.keys()[0]]
         line = fin.readline()
-    # print store
     fin.close()
     return store
 
