@@ -546,7 +546,7 @@ def getDate():
     purl是绝对路径，要修改
     '''
     pros = {}
-    purl = "/root/wechat/wx/wendata/dict/time.json"
+    purl = "/root/INTELLI-City/docs/refer_project/wx/wendata/dict/time.json"
     fin = open(purl, 'r+')
     p = fin.read()
     jp = json.loads(p)

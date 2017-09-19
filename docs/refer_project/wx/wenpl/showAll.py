@@ -309,7 +309,7 @@ def get_warning(result):
     return rstr
 def getResult(url):
     #与服务器建立连接，获取json数据并返回
-    turl = '/root/wechat/wx/wendata/token'
+    turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
 

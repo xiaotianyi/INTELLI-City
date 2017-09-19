@@ -227,7 +227,7 @@ def getResult(url):
     '''
     #与服务器建立连接，获取json数据并返回.turl也是需要改成相对路径
     '''
-    turl = '/root/wechat/wx/wendata/token'
+    turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
     url = 'http://www.intellense.com:3080' + url
@@ -281,7 +281,7 @@ def connectTuring(a):
     '''
     #在没有匹配的时候调用外部问答
     '''
-    kurl = '/root/wechat/wx/wendata/turkey'
+    kurl = '/root/INTELLI-City/docs/refer_project/wx/wendata/turkey'
     fin = open(kurl, 'r+')
     key = fin.read()
     url = r'http://www.tuling123.com/openapi/api?key=' + key + '&info=' + a

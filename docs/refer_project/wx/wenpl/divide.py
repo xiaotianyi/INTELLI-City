@@ -178,6 +178,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
         for x in p:
             if len(paraDict[x[0]]) == 0:
                 url = st[x[0]]
+                print "line 181", url, x[0]
                 remember.append(x)
                 break
     elif len(para) == 1:
@@ -211,7 +212,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
 def getResult(url):
     #与服务器建立连接，获取json数据并返回
     print "url", url
-    turl = '/root/wechat/wx/wendata/token'
+    turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
     if url[:4] != "http":
@@ -277,7 +278,7 @@ def writeData(list):
 
 def connectTuring(a):
     #在没有匹配的时候调用外部问答
-    kurl = '/root/wechat/wx/wendata/turkey'
+    kurl = '/root/INTELLI-City/docs/refer_project/wx/wendata/turkey'
     fin = open(kurl, 'r+')
     key = fin.read()
     url = r'http://www.tuling123.com/openapi/api?key=' + key + '&info=' + a
