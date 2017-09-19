@@ -168,6 +168,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
     # print p
     writeData(p)
     url = ""
+    print "para", para
     if len(para) == 0:
         for x in p:
             if len(paraDict[x[0]]) == 0:
@@ -191,7 +192,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
                 url = st[x[0]][0] + para[0] + st[x[0]][1] + para[1][0]+st[x[0]][2]+para[1][1]
                 remember.append(x)
                 break
-        if url=="":
+        if url == "":
             return 0
 
 
