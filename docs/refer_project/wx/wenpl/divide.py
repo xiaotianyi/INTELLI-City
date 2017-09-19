@@ -216,11 +216,8 @@ def getResult(url):
     fin1 = open(turl, 'r+')
     token = fin1.read()
     if url[:4] != "http":
-        print '1'
         url = 'http://www.intellense.com:3080' + url
-    else:
-        print '2'
-        url = url[0]
+
     print "url", url
     fin1.close()
 
