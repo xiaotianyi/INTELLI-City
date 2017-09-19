@@ -13,10 +13,10 @@ from parsedate import parseDate
 from getdata import*
 from showAll import*
 
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict1.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_manual.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_date.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict2.txt')
+jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict1.txt')
+jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_manual.txt')
+jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_date.txt')
+jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict2.txt')
 
 
 reload(sys)

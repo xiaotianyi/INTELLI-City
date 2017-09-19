@@ -16,7 +16,7 @@ import calendar
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url1="/root/wechat/wx/wendata/dict/"
+url1="/root/INTELLI-City/docs/refer_project/wx/wendata/dict/"
 time="time.json"
 stores="store.json"
 pro="pro.json"
