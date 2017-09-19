@@ -401,7 +401,7 @@ def test(sentence):
         else:
             print "none return"
             # print "json.loads", json.loads(excute_result)
-            re_info = showResult(json.loads(excute_result), remember[0])
+            re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(excute_result, dict) else excute_result
             if re_info == "":
                 # print   "-----------------------------这是结果哦--------------------------------"
                 # print '没有相关数据信息'
