@@ -209,7 +209,8 @@ def getResult(url):
     turl = '/root/wechat/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
-    url = 'http://www.intellense.com:3080' + url
+    if url[:4] != "http":
+        url = 'http://www.intellense.com:3080' + url
     print "url", url
     fin1.close()
 
@@ -338,7 +339,7 @@ def test(sentence):
     ftype=0
     remember=[]
     divide_result = divide(sentence)  # list
-    # print "test divide_result", divide_result
+    print "test divide_result", divide_result
 
     sentence_result = getQueryTypeSet(
         divide_result,
