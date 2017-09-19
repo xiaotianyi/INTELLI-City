@@ -1,4 +1,9 @@
 # encoding=utf-8
+'''
+ 程序入口showreply
+
+
+'''
 import jieba.posseg as pseg
 import jieba
 import sys
@@ -12,21 +17,22 @@ import calendar
 from parsedate import parseDate
 from getdata import*
 from showAll import*
-
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict1.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_manual.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_date.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict2.txt')
+#增加用户词汇库，此处的绝对定位，以后要修改
+jieba.load_userdict('wendata/dict/dict1.txt')
+jieba.load_userdict('wendata/dict/dict_manual.txt')
+jieba.load_userdict('wendata/dict/dict_date.txt')
+jieba.load_userdict('wendata/dict/dict2.txt')
+# jieba.load_userdict('/root/wechat/wx/wendata/dict/dict2.txt')
 
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# sentence = "杭州市 报警数量"  
-# sentence = sentence.replace(' ', '')
-
 
 def mergePositions(l):
+    '''
+    把device\town\city\station 都标记为position
+    '''
     positions = {}
     for x in l:
         for y in x:
@@ -36,8 +42,9 @@ def mergePositions(l):
 
 
 def divide(str):
-    # print str
-    # return the unicode format result
+    '''
+    输入语句分词，分别得到独立词汇和词性
+    '''
     words = pseg.cut(str)
     li = []
     for w in words:
@@ -47,7 +54,9 @@ def divide(str):
 
 
 def filt(li, type):
+    '''词性筛选，暂时没用到
     # get the specific words depending on the type you want
+    '''
     rli = []
     for w in li:
         if w[1] == type:
@@ -56,7 +65,10 @@ def filt(li, type):
 
 
 def paraFilter(store):
+    '''
+    #查看
     # check parameters in store
+    '''
     dictionary = {}
     for x in store.keys():
         dictionary[x] = []
@@ -65,13 +77,15 @@ def paraFilter(store):
             j = re.findall(r'\w+', y)
             if j != []:
                 dictionary[x].append(j)
-    # print dictionary
     return dictionary
 
 
 def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
+    '''
+    输入语句分完词后，判断是不是有pro中的关键词，没的话，就反回0，表示这句话不在查询范围，调用外部资源回答，同时获取参数词：people,position
     # calculate the types of the query words
-    # showp()
+    '''
+
     qType = []
     Nkey = 0
     hasPosition = 0
@@ -94,7 +108,9 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
 
 
 def pointquery(li,points,devices,stations,para):
+    '''
     #"获取某个监测点的数据"
+    '''
     point=""
     device=""
     station=""
@@ -113,9 +129,12 @@ def pointquery(li,points,devices,stations,para):
     else:
         return 0
 
-        
+
 def getPrefixHit(qType, store):
+    '''
+    获命中数量
     # calculate the hit times of each prefix sentences in store
+    '''
     count = {}
     setType = set(qType)
     for i in range(len(store.keys())):
@@ -125,7 +144,10 @@ def getPrefixHit(qType, store):
 
 
 def ranking(count, qType):
+    '''
+    计算命中率
     # calculate the probability
+    '''
     setType = set(qType)
     N = len(setType)
     p = {}
@@ -136,14 +158,19 @@ def ranking(count, qType):
 
 
 def sort(p):
+    '''
     #对命中率进行排序
+    '''
     dicts = sorted(p.iteritems(), key=lambda d: d[1], reverse=True)
     return dicts
     # print dicts
 
 
 def revranking(count):
+    '''
+    计算效率recall
     # showDict(count)
+    '''
     p = {}
     for x in count.keys():
         p[x] = float(count[x] / float(len(x.split(" "))))
@@ -153,9 +180,9 @@ def revranking(count):
     return p
 
 
-def excuteREST(p, rp, st, para, paraDict, qType, remember):
-
-    #执行查询
+def excuteREST(p, rp, st, para, paraDict, qType,remember):
+    '''
+    #执行查询，这里按照参数优先顺序，以后可以优化调整
     # p:正排序后的store匹配度列表
     # rp:反排序后的store匹配度列表
     # st:store字典
@@ -164,10 +191,10 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
     # print showList()
     # p[[[],[]],[]]
     # st{:}
-    p = resort(p, rp)
+    '''
+    p = resort(p, rp)#命中率相同的情况下，按效率来决定先后顺序
     # print p
-    writeData(p)
-    url = ""
+    url=""
     if len(para) == 0:
         for x in p:
             if len(paraDict[x[0]]) == 0:
@@ -182,7 +209,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
                     url = st[x[0]] + para[0]
                     remember.append(x)
                     break
-        if url == "":
+        if url=="":
             return 0
 
     elif len(para) == 2:
@@ -193,31 +220,24 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
                 break
         if url=="":
             return 0
-
-
-    # url=st[p[0][0]]
-    # if len(para)!=0:
-    # 	url+=para[0]
-
     return getResult(url)
 
 
 def getResult(url):
-    #与服务器建立连接，获取json数据并返回
-    print "url", url
+    '''
+    #与服务器建立连接，获取json数据并返回.turl也是需要改成相对路径
+    '''
     turl = '/root/wechat/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
     url = 'http://www.intellense.com:3080' + url
-    print "url", url
+    print url
     fin1.close()
 
     req = urllib2.Request(url)
-    print "req", req
     req.add_header('authorization', token)
     try:
         response = urllib2.urlopen(req)
-        print "response", response
     except Exception as e:
         return 0
 
@@ -226,8 +246,9 @@ def getResult(url):
 
 
 def resort(l1, l2):
+    '''
     # 反向检查匹配度
-    # print l2
+    '''
     l1 = copy.deepcopy(l1)
     l2 = copy.deepcopy(l2)
 
@@ -256,16 +277,10 @@ def resort(l1, l2):
     return newlist
 
 
-def writeData(list):
-    url = 'test.txt'
-    fout = open(url, 'w+')
-    for item in list:
-        fout.write(item[0] + " " + str(item[1]) + '\n')
-    fout.close()
-
-
 def connectTuring(a):
+    '''
     #在没有匹配的时候调用外部问答
+    '''
     kurl = '/root/wechat/wx/wendata/turkey'
     fin = open(kurl, 'r+')
     key = fin.read()
@@ -298,110 +313,78 @@ def showList(l):
 
 
 def test(sentence):
-    # print "test1 sentence", sentence
     sentence = sentence.replace(' ', '')
-    # print "test2 sentence", sentence
     people = getPeople()
-    # print "test3 people", people
     cities = getPosition('cities')
-    # print "test4 cities", cities
     towns = getPosition('towns')
-    # print "test5 towns", towns
     stations = getPosition('stations')
-    # print "test6 stations", stations
     devices = getPosition('devices')
-    # print "test7 devices", devices
     positions = mergePositions([cities, towns, stations, devices])
-    # print "test8 positions", positions
     points=getPoints()
-    # print "test9 points", points
     pro = getPros()
-    # print "test10 pro", pro
     general = getGenerals()
-    # print "test11 general", general
     paraCategory = dict(positions, **people)
-    # print "test12 paraCategory", paraCategory
     dict1 = dict(general, **pro)
-    # print "test dict1", dict1
     dict2 = dict(dict1, **paraCategory)
-    # print "test dict2", dict2
     st = getStore()  # store dict
-    # print "get store", st
     para = []
-    # print "test para", para
     keyphrase = pro.keys()
     paraDict = paraFilter(st)
-    # print "test paraDict", paraDict
     date = parseDate(sentence)
-    # print "test date", date
     ftype=0
     remember=[]
-    divide_result = divide(sentence)  # list
-    # print "test divide_result", divide_result
+    divideResult = divide(sentence)  # list
 
-    sentence_result = getQueryTypeSet(
-        divide_result,
+    sentenceResult = getQueryTypeSet(
+        divideResult,
         dict2,
         para,
         pro,
         paraCategory)  # set
-    for el in sentence_result:
-        print "sentence_result", unicode(el,"utf8", errors="ignore")
-    point_result = pointquery(divide_result, points, devices, stations, para)
-    print "test point_result", point_result
-    if point_result != 0:
-        print "inn1"
+    pointResult=pointquery(divideResult,points,devices,stations,para)
+    if pointResult!=0:
         # print   "-----------------------------这是结果哦--------------------------------"
-        # print get_point_info_with_real_time(json.loads(point_result))
-        return get_point_info_with_real_time(json.loads(point_result))
-    elif sentence_result == 0:
+        # print get_point_info_with_real_time(json.loads(pointResult))
+        return get_point_info_with_real_time(json.loads(pointResult))
+    elif sentenceResult == 0:
         # print   "-----------------------------这是结果哦--------------------------------"
         # print connectTuring(sentence)
-        print "inn Turing"
         return connectTuring(sentence)
     else:
-        print "inn3"
-        if date != 0:
-            sentence_result.append('time')
-        hit_result = getPrefixHit(sentence_result, st)  # dict
-        print "hit_result", hit_result
-        rank_result = ranking(hit_result, sentence_result)  # dict
-        print "rank_result", rank_result
-        reranking_result = revranking(hit_result)
-        print "reranking_result", reranking_result
-        if date != 0:
+        if date!=0:
+            sentenceResult.append('time')
+        hitResult = getPrefixHit(sentenceResult, st)  # dict
+        rankResult = ranking(hitResult, sentenceResult)  # dict
+        rerankingResult = revranking(hitResult)
+        if date!=0:
             para.append(date)
-        print "para", para
-        excute_result = excuteREST(
-            rank_result,
-            reranking_result,
+        excuteResult = excuteREST(
+            rankResult,
+            rerankingResult,
             st,
             para,
             paraDict,
-            sentence_result,
-            remember)
-        print "excute_result", excute_result
-        if excute_result == 0:
-            print "inn turing"
+            sentenceResult,remember)
+        if excuteResult==0:
+            # print   "-----------------------------这是结果哦--------------------------------"
+            # print connectTuring(sentence)
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            print "none return"
-            print "json.loads", json.loads(excute_result)
-            re_info = showResult(json.loads(excute_result), remember[0])
-            if re_info == "":
+            reinfo=showResult(json.loads(excuteResult),remember[0])
+            if reinfo=="":
                 # print   "-----------------------------这是结果哦--------------------------------"
                 # print '没有相关数据信息'
                 return '没有相关数据信息'
             else:
                 # print   "-----------------------------这是结果哦--------------------------------"
-                # print re_info
-                return re_info
+                # print reinfo
+                return reinfo
 
 # test()
 def showReply(sentence):
+    '''程序入口'''
     sentence=str(sentence)
-    print "sentence", sentence
     try:
         return test(sentence)
     except Exception as e:
@@ -410,4 +393,3 @@ def showReply(sentence):
         return '我好像不太明白·_·'
 
 # print showReply("查询工单")
-
