@@ -211,7 +211,6 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
 
 def getResult(url):
     #与服务器建立连接，获取json数据并返回
-    print "url", url
     turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
@@ -224,13 +223,14 @@ def getResult(url):
     req = urllib2.Request(url)
     print "req", req
     req.add_header('authorization', token)
-    try:
-        response = urllib2.urlopen(req)["message"]
-        print "response", response
-    except Exception as e:
-        return 0
+    response = urllib2.urlopen(req)
+    print "response", response
+    # try:
+    #     response = urllib2.urlopen(req)["message"]
+    #     print "response", response
+    # except Exception as e:
+    #     return 0
 
-    # print response.read()
     return response.read()
 
 
