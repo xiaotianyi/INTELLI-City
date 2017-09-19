@@ -67,6 +67,7 @@ def getPros():
     fin = open(purl, 'r+')
     p = fin.read()
     jp = json.loads(p)
+    print "pro", jp
     pros = toUTF8(jp)
     return pros
 
