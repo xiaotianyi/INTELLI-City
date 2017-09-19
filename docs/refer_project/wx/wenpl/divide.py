@@ -337,7 +337,7 @@ def test(sentence):
     para = []
     # print "test para", para
     keyphrase = pro.keys()
-    print "keys", keyphrase
+    print "keys", keyphrase, len(keyphrase)
     paraDict = paraFilter(st)
     # print "test paraDict", paraDict
     date = parseDate(sentence)
