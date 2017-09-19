@@ -87,6 +87,9 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
                 Nkey += 1
             if word in paraCategory.keys():
                 paradic[paraCategory[word]] = word
+    print "qType", qType
+    print "Nkey", Nkey
+    print "para", para
     for x in paradic.values():
         para.append(x)
     if Nkey == 0:
