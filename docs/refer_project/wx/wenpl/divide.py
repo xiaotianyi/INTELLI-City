@@ -218,15 +218,18 @@ def getResult(url):
     if url[:4] != "http":
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
+        print "url", url
+        req = urllib2.Request(url)
+        print "req", req
+        req.add_header('authorization', token) if web_flag else None
+        response = urllib2.urlopen(req)
+        print "response", response
+    else:
+        return "请打开网址" + url
 
-    print "url", url
     fin1.close()
 
-    req = urllib2.Request(url)
-    print "req", req
-    req.add_header('authorization', token) if web_flag else None
-    response = urllib2.urlopen(req)
-    print "response", response
+
     # try:
     #     response = urllib2.urlopen(req)["message"]
     #     print "response", response
