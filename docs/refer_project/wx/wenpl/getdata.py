@@ -68,7 +68,6 @@ def getPros():
     p = fin.read()
     jp = json.loads(p)
     pros = toUTF8(jp)
-    # print positions
     return pros
 
 
