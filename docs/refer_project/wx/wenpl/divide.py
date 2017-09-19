@@ -388,7 +388,7 @@ def test(sentence):
         # b=filt(a,'v')
         else:
             print "none return"
-            print "json.loads", json.loads(excute_result)
+            # print "json.loads", json.loads(excute_result)
             re_info = showResult(json.loads(excute_result), remember[0])
             if re_info == "":
                 # print   "-----------------------------这是结果哦--------------------------------"
