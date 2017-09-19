@@ -81,6 +81,7 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     # print pro
     for w in li:
         word = w[0]
+        print "word", word
         if word in dictionary.keys():
             qType.append(dictionary[word])
             if word in pro:
