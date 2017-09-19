@@ -1,5 +1,6 @@
 {"查询 全部 工单":"/order/get_order_relations"}
 {"查询 全部 工具包":"http://122.224.116.44:5005/toolkit/toolkits/public"}
+{"管理 注册 登录 用户":"http://60.190.248.2:9990/admin"}
 {"查询 全部 设备 类型":"/get_device_type"}
 {"查询 全部 设备":"/monitoring_manage/get_devices"}
 {"查询 全部 采集点":"/get_point_types?page=1&limit=50"}
