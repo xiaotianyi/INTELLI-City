@@ -223,7 +223,7 @@ def getResult(url):
 
     req = urllib2.Request(url)
     print "req", req
-    req.add_header('authorization', token)
+    # req.add_header('authorization', token)
     try:
         response = urllib2.urlopen(req)
         print "response", response
