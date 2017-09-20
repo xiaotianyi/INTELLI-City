@@ -366,8 +366,8 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
-    for el in sentence_result:
-        # print "sentence_result", unicode(el, "utf8", errors="ignore")
+    # for el in sentence_result:
+    #     print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
         # print   "-----------------------------这是结果哦--------------------------------"
