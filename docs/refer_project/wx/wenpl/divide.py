@@ -173,7 +173,7 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
     # print p
     writeData(p)
     url = ""
-    print "para", para
+    # print "para", para
     if len(para) == 0:
         for x in p:
             if len(paraDict[x[0]]) == 0:
@@ -221,7 +221,7 @@ def getResult(url):
     if url[:4] != "http":
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
-    elif url == "http://60.190.248.2:9990/admin":
+    elif url == "http://60.190.248.2:9990/django_cas/login":
         return "登录请打开网址" + url
     print "url", url
 
@@ -367,8 +367,8 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
-    for el in sentence_result:
-        print "sentence_result", unicode(el, "utf8", errors="ignore")
+    # for el in sentence_result:
+    #     print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
         # print get_point_info_with_real_time(json.loads(point_result))
@@ -379,7 +379,7 @@ def test(sentence):
         if date != 0:
             sentence_result.append('time')
         hit_result = getPrefixHit(sentence_result, st)  # dict
-        print "hit_result", hit_result
+        # print "hit_result", hit_result
         rank_result = ranking(hit_result, sentence_result)  # dict
         # print "rank_result", rank_result
         reranking_result = revranking(hit_result)
@@ -400,7 +400,7 @@ def test(sentence):
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            re_info = showResult(json.loads(excute_result), remember[0])
+            re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(json.loads(excute_result), dict) else re_info
             if re_info == "":
                 return '没有相关数据信息'
             else:
