@@ -400,8 +400,7 @@ def test(sentence):
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            print "dict?", isinstance(excute_result, dict)
-            re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(excute_result, dict) else re_info
+            re_info = re_info if isinstance(excute_result, str) else showResult(json.loads(excute_result), remember[0])
             print "re_info", re_info
             if re_info == "":
                 return '没有相关数据信息'
