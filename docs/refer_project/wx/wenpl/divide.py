@@ -400,7 +400,7 @@ def test(sentence):
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            print "check type", isinstance(excute_result, str)
+            print "check type", isinstance(json.loads(excute_result), str)
             re_info = showResult(json.loads(excute_result), remember[0])
             # re_info = re_info if isinstance(excute_result, str) else showResult(json.loads(excute_result), remember[0])
             print "re_info", re_info
