@@ -66,11 +66,11 @@ def get_public_toolkit(result):
         count = 0
         print "inn3", r_str
         for item in res[key]:
-            print "inn4"
-            r_str += count + ":" + item["name"] + "\n"
-            r_str += "简介" + item["description"] + "\n"
-        r_str += "---------------\n"
-    print "inn3", r_str
+            r_str += str(count) + ":" + item["name"] + "\n"
+            r_str += "简介: " + item["description"] + "\n"
+            print "r_str", r_str
+        r_str += "\n"
+    print "inn done", r_str
     return r_str
 
 
