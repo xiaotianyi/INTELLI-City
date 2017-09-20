@@ -401,8 +401,14 @@ def test(sentence):
         # b=filt(a,'v')
         else:
             # print "check type", isinstance(json.loads(excute_result), dict)
-            re_info = showResult(json.loads(excute_result), remember[0])
-            print "re_info", re_info
+            try:
+                json.loads(excute_result)
+                print "done"
+                re_info = showResult(json.loads(excute_result), remember[0])
+            except:
+                print "re_info", re_info
+                return re_info
+
             if re_info == "":
                 return '没有相关数据信息'
             else:
