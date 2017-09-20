@@ -334,24 +334,24 @@ def test(sentence):
     positions = mergePositions([cities, towns, stations, devices])
     # print "test8 positions", positions
     points = getPoints()
-    print "test9 points", points
+    # print "test9 points", points
     pro = getPros()
-    # print "test10 pro", pro
+    print "test10 pro", pro
     general = getGenerals()
-    # print "test11 general", general
+    print "test11 general", general
     paraCategory = dict(positions, **people)
-    # print "test12 paraCategory", paraCategory
+    print "test12 paraCategory", paraCategory
     dict1 = dict(general, **pro)
-    # print "test dict1", dict1
+    print "test dict1", dict1
     dict2 = dict(dict1, **paraCategory)
-    # print "test dict2", dict2
+    print "test dict2", dict2
     st = getStore()  # store dict
-    # print "get store", st
+    print "get store", st
     para = []
-    # print "test para", para
+    print "test para", para
     keyphrase = pro.keys()
     paraDict = paraFilter(st)
-    # print "test paraDict", paraDict
+    print "test paraDict", paraDict
     date = parseDate(sentence)
     print "test date", date
     ftype=0
