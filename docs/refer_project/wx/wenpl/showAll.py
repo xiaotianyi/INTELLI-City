@@ -7,6 +7,7 @@ import sys
 import urllib2
 import json
 
+
 def showResult(result,types):
     if types[0]=="查询 全部 工单":
         return get_order_relations(result)
@@ -47,6 +48,7 @@ def showResult(result,types):
     if types[0]=="查询 people 通知":
         return get_received_messages(result)
 
+
 def get_order_relations(result):
     # print result
     rstr=""
@@ -67,12 +69,14 @@ def get_order_relations(result):
         rstr+='\n\n'
     return rstr
 
+
 def get_device_type(result):
     rstr=""
     for x in result['response'].values():
         rstr+=x
         rstr+='\n'
     return rstr
+
 
 def monitoring_manage_get_devices(result):
     rstr=""
@@ -93,6 +97,7 @@ def monitoring_manage_get_devices(result):
         rstr+='\n\n'
     return rstr
 
+
 def get_point_types(result):
     rstr=""
     for x in result['response']:
@@ -100,6 +105,7 @@ def get_point_types(result):
         rstr+=x['name']
         rstr+='\n'
     return rstr
+
 
 def get_drill_plan(result):
     rstr=""
@@ -130,12 +136,14 @@ def get_drill_plan(result):
 
     return rstr
 
+
 def get_stations_name(result):
     rstr=""
     for x in result['response']:
         rstr+=x
         rstr+='\n'
     return rstr
+
 
 def get_operation_logs(result):
     rstr=""
@@ -154,6 +162,7 @@ def get_operation_logs(result):
         rstr+=x['is_all_success']
         rstr+='\n\n'
     return rstr
+
 
 def get_devices_by_parents_name(result):
     rstr="设备名称:\n"
@@ -201,22 +210,24 @@ def get_staff_from_district(result):
             rstr+=y['name']
     return rstr
 
+
 def get_received_messages(result):
     rstr=""
     for x in result['response']:
-        rstr+="发件人:"
-        rstr+=x['sender']
-        rstr+='\n'
-        rstr+="时间:"
-        rstr+=x['timestamp']
-        rstr+='\n'
-        rstr+="标题:"
-        rstr+=x['title']
-        rstr+='\n'
-        rstr+="内容:"
-        rstr+=x['content']
-        rstr+='\n\n'
+        rstr += "发件人:"
+        rstr += x['sender']
+        rstr += '\n'
+        rstr += "时间:"
+        rstr += x['timestamp']
+        rstr += '\n'
+        rstr += "标题:"
+        rstr += x['title']
+        rstr += '\n'
+        rstr += "内容:"
+        rstr += x['content']
+        rstr += '\n\n'
     return rstr
+
 
 def get_user_operation_log(result):
     rstr=""
