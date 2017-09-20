@@ -173,12 +173,12 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
     # print p
     writeData(p)
     url = ""
-    # print "para", para
+    print "para", para
     if len(para) == 0:
         for x in p:
             if len(paraDict[x[0]]) == 0:
                 url = st[x[0]]
-                # print "line 181", url, x[0]
+                print "line 181", url, x[0]
                 remember.append(x)
                 break
     elif len(para) == 1:
@@ -379,7 +379,7 @@ def test(sentence):
         if date != 0:
             sentence_result.append('time')
         hit_result = getPrefixHit(sentence_result, st)  # dict
-        # print "hit_result", hit_result
+        print "hit_result", hit_result
         rank_result = ranking(hit_result, sentence_result)  # dict
         # print "rank_result", rank_result
         reranking_result = revranking(hit_result)
