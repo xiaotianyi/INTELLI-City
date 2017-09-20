@@ -222,7 +222,7 @@ def getResult(url):
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
     elif url == "http://60.190.248.2:9990/django_cas/login":
-        return "登录请打开网址" + url
+        return ("登录请打开网址" + url, 1)
     print "url", url
 
     req = urllib2.Request(url)
@@ -244,7 +244,7 @@ def getResult(url):
     # except Exception as e:
     #     return 0
 
-    return response.read()
+    return response.read(), 0
 
 
 def resort(l1, l2):
@@ -386,7 +386,7 @@ def test(sentence):
         # print "reranking_result", reranking_result[0]
         if date != 0:
             para.append(date)
-        excute_result = excuteREST(
+        excute_result, str_flg = excuteREST(
             rank_result,
             reranking_result,
             st,
@@ -398,8 +398,7 @@ def test(sentence):
         if excute_result == 0:
             return connectTuring(sentence)
         else:
-            print "check", type(json.loads(excute_result))
-            re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(excute_result, dict) else excute_result
+            re_info = showResult(json.loads(excute_result), remember[0]) if not str_flg else excute_result
             # try:
             #     json.loads(excute_result)
             #     print "done"
