@@ -318,11 +318,11 @@ def showList(l):
 
 
 def test(sentence):
-    # print "test1 sentence", sentence
+    print "test1 sentence", sentence
     sentence = sentence.replace(' ', '')
-    # print "test2 sentence", sentence
+    print "test2 sentence", sentence
     people = getPeople()
-    # print "test3 people", people
+    print "test3 people", people
     cities = getPosition('cities')
     # print "test4 cities", cities
     towns = getPosition('towns')
@@ -334,7 +334,7 @@ def test(sentence):
     positions = mergePositions([cities, towns, stations, devices])
     # print "test8 positions", positions
     points = getPoints()
-    # print "test9 points", points
+    print "test9 points", points
     pro = getPros()
     # print "test10 pro", pro
     general = getGenerals()
@@ -353,7 +353,7 @@ def test(sentence):
     paraDict = paraFilter(st)
     # print "test paraDict", paraDict
     date = parseDate(sentence)
-    # print "test date", date
+    print "test date", date
     ftype=0
     remember=[]
     divide_result = divide(sentence)  # list
