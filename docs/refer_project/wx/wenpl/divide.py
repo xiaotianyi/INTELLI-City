@@ -81,16 +81,16 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     # print pro
     for w in li:
         word = w[0]
-        print "word", word
+        # print "word", word
         if word in dictionary.keys():
             qType.append(dictionary[word])
             if word in pro:
                 Nkey += 1
             if word in paraCategory.keys():
                 paradic[paraCategory[word]] = word
-    print "qType", qType
-    print "Nkey", Nkey
-    print "para", para
+    # print "qType", qType
+    # print "Nkey", Nkey
+    # print "para", para
     for x in paradic.values():
         para.append(x)
     if Nkey == 0:
@@ -173,12 +173,12 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
     # print p
     writeData(p)
     url = ""
-    print "para", para
+    # print "para", para
     if len(para) == 0:
         for x in p:
             if len(paraDict[x[0]]) == 0:
                 url = st[x[0]]
-                print "line 181", url, x[0]
+                # print "line 181", url, x[0]
                 remember.append(x)
                 break
     elif len(para) == 1:
@@ -320,11 +320,11 @@ def showList(l):
 
 
 def test(sentence):
-    print "test1 sentence", sentence
+    # print "test1 sentence", sentence
     sentence = sentence.replace(' ', '')
-    print "test2 sentence", sentence
+    # print "test2 sentence", sentence
     people = getPeople()
-    print "test3 people", people
+    # print "test3 people", people
     cities = getPosition('cities')
     # print "test4 cities", cities
     towns = getPosition('towns')
@@ -367,7 +367,7 @@ def test(sentence):
         pro,
         paraCategory)  # set
     for el in sentence_result:
-        print "sentence_result", unicode(el, "utf8", errors="ignore")
+        # print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
         # print   "-----------------------------这是结果哦--------------------------------"
@@ -396,13 +396,13 @@ def test(sentence):
             paraDict,
             sentence_result,
             remember)
-        print "excute_result", excute_result
+        # print "excute_result", excute_result
         if excute_result == 0:
-            print "inn turing"
+            # print "inn turing"
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            print "none return"
+            # print "none return"
             # print "json.loads", json.loads(excute_result)
             re_info = showResult(json.loads(excute_result), remember[0])
             if re_info == "":
@@ -413,12 +413,12 @@ def test(sentence):
 # test()
 def showReply(sentence):
     sentence=str(sentence)
-    print "sentence", sentence
-    return test(sentence)
-    # try:
-    #     return test(sentence)
-    # except Exception as e:
-    #     return '我好像不太明白·_·'
+    # print "sentence", sentence
+    # return test(sentence)
+    try:
+        return test(sentence)
+    except Exception as e:
+        return '我好像不太明白·_·'
 
 # print showReply("查询工单")
 
