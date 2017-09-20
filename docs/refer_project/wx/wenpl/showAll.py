@@ -52,16 +52,21 @@ def showResult(result,types):
         return get_received_messages(result)
 
     if types[0] == "查询 全部 工具包":
+        print "inn"
         return get_public_toolkit(result)
 
 
 def get_public_toolkit(result):
+    print "inn1"
     r_str = ""
     res = result['response']
+    print "inn2"
     for key in res:
+        print "inn3"
         r_str += key + ":\n"
         count = 0
         for item in res[key]:
+            print "inn4"
             r_str += count + ":" + item["name"] + "\n"
             r_str += "简介" + item["description"] + "\n"
         r_str += "---------------\n"

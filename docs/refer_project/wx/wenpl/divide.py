@@ -369,19 +369,15 @@ def test(sentence):
     for el in sentence_result:
         print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
-    print "test point_result", point_result
     if point_result != 0:
-        print "inn1"
         # print   "-----------------------------这是结果哦--------------------------------"
         # print get_point_info_with_real_time(json.loads(point_result))
         return get_point_info_with_real_time(json.loads(point_result))
     elif sentence_result == 0:
         # print   "-----------------------------这是结果哦--------------------------------"
         # print connectTuring(sentence)
-        print "inn Turing"
         return connectTuring(sentence)
     else:
-        print "inn3"
         if date != 0:
             sentence_result.append('time')
         hit_result = getPrefixHit(sentence_result, st)  # dict
@@ -392,7 +388,6 @@ def test(sentence):
         # print "reranking_result", reranking_result[0]
         if date != 0:
             para.append(date)
-        print "para", para
         excute_result = excuteREST(
             rank_result,
             reranking_result,
@@ -411,12 +406,9 @@ def test(sentence):
             # print "json.loads", json.loads(excute_result)
             re_info = showResult(json.loads(excute_result), remember[0])
             if re_info == "":
-                # print   "-----------------------------这是结果哦--------------------------------"
-                # print '没有相关数据信息'
                 return '没有相关数据信息'
             else:
-                # print   "-----------------------------这是结果哦--------------------------------"
-                # print re_info
+
                 return re_info
 
 # test()
