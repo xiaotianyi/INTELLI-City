@@ -64,7 +64,7 @@ def get_public_toolkit(result):
         count = 1
         for item in res[key]:
             r_str += str(count) + ":" + item["name"] + "\n"
-            r_str += "简介: " + item["description"] + "\n"
+            # r_str += "简介: " + item["description"] + "\n"
             count += 1
         r_str += "\n"
     print "inn done", r_str
