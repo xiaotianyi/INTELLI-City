@@ -219,7 +219,7 @@ def getResult(url):
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
     print "url", url
-    
+
     req = urllib2.Request(url)
     req.add_header('authorization', token) if web_flag else None
     response = urllib2.urlopen(req)
