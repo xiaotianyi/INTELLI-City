@@ -408,17 +408,17 @@ def test(sentence):
             if re_info == "":
                 return '没有相关数据信息'
             else:
-
                 return re_info
 
 # test()
 def showReply(sentence):
     sentence=str(sentence)
     print "sentence", sentence
-    try:
-        return test(sentence)
-    except Exception as e:
-        return '我好像不太明白·_·'
+    return test(sentence)
+    # try:
+    #     return test(sentence)
+    # except Exception as e:
+    #     return '我好像不太明白·_·'
 
 # print showReply("查询工单")
 

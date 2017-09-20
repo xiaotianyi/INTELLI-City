@@ -88,6 +88,7 @@ def get_order_relations(result):
             rstr+=worker['id']
             rstr+='\n'
         rstr+='\n\n'
+    print "r_str", rstr
     return rstr
 
 
