@@ -9,48 +9,66 @@ import json
 
 
 def showResult(result,types):
-    if types[0]=="查询 全部 工单":
+    if types[0] == "查询 全部 工单":
         return get_order_relations(result)
 
-    if types[0]=="查询 全部 设备 类型":
+    if types[0] == "查询 全部 设备 类型":
         return get_device_type(result)
 
-    if types[0]=="查询 全部 设备":
+    if types[0] == "查询 全部 设备":
         return monitoring_manage_get_devices(result)
 
-    if types[0]=="查询 全部 采集点":
+    if types[0] == "查询 全部 采集点":
         return get_point_types(result)
 
-    if types[0]=="查询 全部 应急 演练 预案":
+    if types[0] == "查询 全部 应急 演练 预案":
         return get_drill_plan(result)
 
-    if types[0]=="查询 局站 名称":
+    if types[0] == "查询 局站 名称":
         return get_stations_name(result)
 
-    if types[0]=="查询 全部 操作 日志":
+    if types[0] == "查询 全部 操作 日志":
         return get_operation_logs(result)
 
-    if types[0]=="查询 position 报警 数量":
+    if types[0] == "查询 position 报警 数量":
         return get_children_with_warning_count(result)
 
-    if types[0]=="查询 position 员工":
+    if types[0] == "查询 position 员工":
         return get_staff_from_district(result)
 
-    if types[0]=="查询 people 操作 日志 历史"or types[0]=="查询 people time 操作 日志 历史":
+    if types[0] == "查询 people 操作 日志 历史"or types[0]=="查询 people time 操作 日志 历史":
         return get_user_operation_log(result)
 
-    if types[0]=="查询 people 历史 工单" or types[0]=="查询 people time 历史 工单":
+    if types[0] == "查询 people 历史 工单" or types[0]=="查询 people time 历史 工单":
         return get_work_orders(result)
-    if types[0]=="查询 position 报警" or types[0]=="查询 position time 报警":
+
+    if types[0] == "查询 position 报警" or types[0]=="查询 position time 报警":
         return get_warning(result)
-    if types[0]=="查询 position 设备":
+
+    if types[0] == "查询 position 设备":
         return get_devices_by_parents_name(result)
-    if types[0]=="查询 people 通知":
+
+    if types[0] == "查询 people 通知":
         return get_received_messages(result)
+
+    if types[0] == "查询 全部 工具包":
+        return get_public_toolkit(result)
+
+
+def get_public_toolkit(result):
+    r_str = ""
+    res = result['response']
+    for key in res:
+        r_str += key + ":\n"
+        count = 0
+        for item in res[key]:
+            r_str += count + ":" + item["name"] + "\n"
+            r_str += "简介" + item["description"] + "\n"
+        r_str += "---------------\n"
+    return r_str
 
 
 def get_order_relations(result):
-    # print result
     rstr=""
     for x in result['message']:
         rstr+="设备编号:"
