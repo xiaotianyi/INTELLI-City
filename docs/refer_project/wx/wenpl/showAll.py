@@ -8,7 +8,7 @@ import urllib2
 import json
 
 
-def showResult(result,types):
+def showResult(result, types):
     if types[0] == "查询 全部 工单":
         return get_order_relations(result)
 
