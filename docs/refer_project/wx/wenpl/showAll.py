@@ -57,18 +57,15 @@ def showResult(result,types):
 
 
 def get_public_toolkit(result):
-    print "inn1"
     r_str = ""
     res = result['response']
-    print "inn2", r_str
     for key in res:
         r_str += key + ":\n"
-        count = 0
-        print "inn3", r_str
+        count = 1
         for item in res[key]:
             r_str += str(count) + ":" + item["name"] + "\n"
             r_str += "简介: " + item["description"] + "\n"
-            print "r_str", r_str
+            count += 1
         r_str += "\n"
     print "inn done", r_str
     return r_str
