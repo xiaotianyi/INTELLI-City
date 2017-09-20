@@ -401,10 +401,7 @@ def test(sentence):
         # b=filt(a,'v')
         else:
             # print "check type", isinstance(json.loads(excute_result), dict)
-            try:
-                re_info = showResult(json.loads(excute_result), remember[0])
-            except:
-                pass
+            re_info = showResult(json.loads(excute_result), remember[0])
             print "re_info", re_info
             if re_info == "":
                 return '没有相关数据信息'

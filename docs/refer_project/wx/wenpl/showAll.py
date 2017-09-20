@@ -54,6 +54,9 @@ def showResult(result, types):
     if types[0] == "查询 全部 工具包":
         return get_public_toolkit(result)
 
+    if types[0] == "管理 注册 登录 用户":
+        return result
+
 
 def get_public_toolkit(result):
     r_str = ""
