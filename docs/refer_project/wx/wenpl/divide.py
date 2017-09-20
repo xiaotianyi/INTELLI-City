@@ -359,6 +359,7 @@ def test(sentence):
     ftype=0
     remember=[]
     divide_result = divide(sentence)  # list
+    print "devide_result", divide_result
 
     sentence_result = getQueryTypeSet(
         divide_result,
@@ -366,16 +367,13 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
-    # for el in sentence_result:
-    #     print "sentence_result", unicode(el, "utf8", errors="ignore")
+    for el in sentence_result:
+        print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
-        # print   "-----------------------------这是结果哦--------------------------------"
         # print get_point_info_with_real_time(json.loads(point_result))
         return get_point_info_with_real_time(json.loads(point_result))
     elif sentence_result == 0:
-        # print   "-----------------------------这是结果哦--------------------------------"
-        # print connectTuring(sentence)
         return connectTuring(sentence)
     else:
         if date != 0:
@@ -402,8 +400,6 @@ def test(sentence):
             return connectTuring(sentence)
         # b=filt(a,'v')
         else:
-            # print "none return"
-            # print "json.loads", json.loads(excute_result)
             re_info = showResult(json.loads(excute_result), remember[0])
             if re_info == "":
                 return '没有相关数据信息'
