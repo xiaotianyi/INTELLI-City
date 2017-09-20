@@ -210,7 +210,10 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
 
 
 def getResult(url):
-    #与服务器建立连接，获取json数据并返回
+    # 与服务器建立连接，获取json数据并返回
+    # 有一条通服务期跳转的例子需要解决，如下
+    # //{"查询 全部 工具包":"http://122.224.116.44:5005/toolkit/toolkits/public"}
+
     turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
@@ -336,24 +339,24 @@ def test(sentence):
     points = getPoints()
     # print "test9 points", points
     pro = getPros()
-    print "test10 pro", pro
+    # print "test10 pro", pro
     general = getGenerals()
-    print "test11 general", general
+    # print "test11 general", general
     paraCategory = dict(positions, **people)
-    print "test12 paraCategory", paraCategory
+    # print "test12 paraCategory", paraCategory
     dict1 = dict(general, **pro)
-    print "test dict1", dict1
+    # print "test dict1", dict1
     dict2 = dict(dict1, **paraCategory)
-    print "test dict2", dict2
+    # print "test dict2", dict2
     st = getStore()  # store dict
-    print "get store", st
+    # print "get store", st
     para = []
-    print "test para", para
+    # print "test para", para
     keyphrase = pro.keys()
     paraDict = paraFilter(st)
-    print "test paraDict", paraDict
+    # print "test paraDict", paraDict
     date = parseDate(sentence)
-    print "test date", date
+    # print "test date", date
     ftype=0
     remember=[]
     divide_result = divide(sentence)  # list
