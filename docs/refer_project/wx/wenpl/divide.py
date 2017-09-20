@@ -220,9 +220,9 @@ def getResult(url):
         web_flag = 1
 
     print "url", url
-    print "if equal", url == 'http://122.224.116.44:5005/toolkit/toolkits/public'
+    print "if equal", url == 'http://10.52.14.182:5005/toolkit/toolkits/public'
 
-    url = 'http://122.224.116.44:5005/toolkit/toolkits/public'
+    url = 'http://10.52.14.182:5005/toolkit/toolkits/public'
     req = urllib2.Request(url)
     print "11"
     # req.add_header('authorization', token) if web_flag else None
