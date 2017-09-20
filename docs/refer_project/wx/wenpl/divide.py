@@ -221,7 +221,8 @@ def getResult(url):
 
     print "url", url
     req = urllib2.Request(url)
-    req.add_header('authorization', token) if web_flag else None
+    print "done"
+    # req.add_header('authorization', token) if web_flag else None
     response = urllib2.urlopen(req)
     print "response", response
 
