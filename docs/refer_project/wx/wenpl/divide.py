@@ -394,11 +394,9 @@ def test(sentence):
             paraDict,
             sentence_result,
             remember)
-        print "excute_result", excute_result
+        print "excute_result", excute_result, type(excute_result)
         if excute_result == 0:
-            # print "inn turing"
             return connectTuring(sentence)
-        # b=filt(a,'v')
         else:
             re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(excute_result, dict) else excute_result
             # try:
