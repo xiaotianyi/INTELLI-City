@@ -52,7 +52,6 @@ def showResult(result,types):
         return get_received_messages(result)
 
     if types[0] == "查询 全部 工具包":
-        print "inn"
         return get_public_toolkit(result)
 
 
@@ -67,7 +66,7 @@ def get_public_toolkit(result):
             # r_str += "简介: " + item["description"] + "\n"
             count += 1
         r_str += "\n"
-    print "inn done", r_str
+    # print "inn done", r_str
     return r_str
 
 
@@ -88,7 +87,7 @@ def get_order_relations(result):
             rstr+=worker['id']
             rstr+='\n'
         rstr+='\n\n'
-    print "r_str", rstr
+    # print "r_str", rstr
     return rstr
 
 
