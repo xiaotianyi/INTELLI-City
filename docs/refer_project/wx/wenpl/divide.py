@@ -398,6 +398,7 @@ def test(sentence):
         if excute_result == 0:
             return connectTuring(sentence)
         else:
+            print "check", type(json.loads(excute_result))
             re_info = showResult(json.loads(excute_result), remember[0]) if isinstance(excute_result, dict) else excute_result
             # try:
             #     json.loads(excute_result)
