@@ -69,6 +69,10 @@ def paraFilter(store):
     return dictionary
 
 
+def get_platform():
+    pass
+
+
 def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     # calculate the types of the query words
     # showp()

@@ -24,6 +24,14 @@ general = "general.json"
 point = "points.json"
 peoples = "people.json"
 
+# 为了代码方便，先不写在文件里，测试用
+api_platform = {
+    "数据平台": 0,
+    "动环系统": 1,
+    "用户管理系统": 2
+}
+
+
 def getDate():
     pros = {}
     purl = url1+time
@@ -31,7 +39,6 @@ def getDate():
     p = fin.read()
     jp = json.loads(p)
     pros = toUTF8(jp)
-    # print positionsge
     return pros
 
 
@@ -47,7 +54,6 @@ def getStore():
         line = fin.readline()
     fin.close()
     return store
-
 
 
 def getPosition(type):
