@@ -414,7 +414,7 @@ def test(sentence):
             if re_info == "":
                 return '没有相关数据信息'
             else:
-                return re_info
+                return re_info[:100]
 
 # test()
 def showReply(sentence):
