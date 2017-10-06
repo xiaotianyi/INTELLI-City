@@ -398,7 +398,7 @@ def test(sentence):
             paraDict,
             sentence_result,
             remember)
-        print "excute_result", excute_result, type(excute_result)
+        print "excute_result", excute_result[:100], type(excute_result)
         if excute_result == 0:
             return connectTuring(sentence)
         else:
@@ -417,7 +417,7 @@ def test(sentence):
 
 # test()
 def showReply(sentence):
-    sentence=str(sentence)
+    sentence = str(sentence)
     # print "sentence", sentence
     # return test(sentence)
     try:
