@@ -409,6 +409,7 @@ def test(sentence):
             #     re_info = showResult(json.loads(excute_result), remember[0])
             # except:
             #     return re_info
+            print "hahaha", re_info
             print "re_info", type(re_info)
             if re_info == "":
                 return '没有相关数据信息'
