@@ -226,7 +226,7 @@ def getResult(url):
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
     elif url == "http://60.190.248.2:9990/django_cas/login":
-        return ("登录请打开网址" + url, 1)
+        return ("请先完成注册!\n点击如下网址: " + url, 1)
     print "url", url
 
     req = urllib2.Request(url)
