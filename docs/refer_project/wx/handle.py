@@ -25,7 +25,7 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
                 print "show vioce text", content
-		        replyMsg = reply.VoiceMsg(toUser, fromUser, content)
+                replyMsg = reply.VoiceMsg(toUser, fromUser, content)
                 return replyMsg.send()
             else:
                 print "暂且不处理"

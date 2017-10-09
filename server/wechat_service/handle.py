@@ -38,7 +38,6 @@ class Handle(object):
             return Argment
 
     def GET(self):
-
         try:
             webdata=web.input()
             print webdata
