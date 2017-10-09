@@ -4,6 +4,7 @@ import json
 import hashlib
 
 import web
+# TODO
 from wenpl.divide import showReply
 
 import receive
@@ -28,7 +29,7 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
                 print "show vioce text", content
-		replyMsg = reply.VoiceMsg(toUser, fromUser, content)
+                replyMsg = reply.VoiceMsg(toUser, fromUser, content)
                 return replyMsg.send()
             else:
                 print "暂且不处理"
