@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-
 import web
-from handle import Handle
+from wechat_service.handle import Handle
 
 urls = (
     '/wx', 'Handle',
