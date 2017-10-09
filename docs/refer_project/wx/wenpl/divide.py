@@ -372,13 +372,14 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
-    # for el in sentence_result:
-    #     print "sentence_result", unicode(el, "utf8", errors="ignore")
+    for el in sentence_result:
+        print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
         # print get_point_info_with_real_time(json.loads(point_result))
         return get_point_info_with_real_time(json.loads(point_result))
     elif sentence_result == 0:
+        print "BUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUG"
         return connectTuring(sentence)
     else:
         if date != 0:
