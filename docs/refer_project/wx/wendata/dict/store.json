@@ -17,3 +17,4 @@
 {"查询 people 通知": "/message/get_received_messages?&&keyword=&&start=&&end=&&current_page=1&&user="}
 {"查询 position time 报警": ["/reports/gen_report/warnings?parent_name=","&start=","&end="]}
 {"查询 实时 stations devices points": ["/data/point_info_with_real_time?station_name=","&device_name=","&point_name="]}
+{"查询 智慧灯杆 气象 天气": "fake data"}

@@ -182,7 +182,6 @@ def excuteREST(p, rp, st, para, paraDict, qType, remember):
         for x in p:
             if len(paraDict[x[0]]) == 0:
                 url = st[x[0]]
-                print "line 181", url, x[0]
                 remember.append(x)
                 break
     elif len(para) == 1:
@@ -227,6 +226,8 @@ def getResult(url):
         web_flag = 1
     elif url == "http://60.190.248.2:9990/django_cas/login":
         return ("请先完成注册!\n点击如下网址: " + url, 1)
+    elif url == "fake data":
+        return ("探测到用户所在位置: 杭州\n实时气象信息——\n温度: 24摄氏度、\n相对湿度: 68%、\n降水量: 0mm、\n风力风向: 东风3级、\n空气质量: 49 优")
     print "url", url
 
     req = urllib2.Request(url)
@@ -413,7 +414,7 @@ def test(sentence):
             if re_info == "":
                 return '没有相关数据信息'
             else:
-                return re_info[:100]
+                return re_info
 
 
 # test()
