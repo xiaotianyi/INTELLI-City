@@ -192,7 +192,7 @@ def excuteREST(p, rp, st, para, paraDict, qType,remember):
     # p[[[],[]],[]]
     # st{:}
     '''
-    p = resort(p, rp)#命中率相同的情况下，按效率来决定先后顺序
+    p = resort(p, rp)  # 命中率相同的情况下，按效率来决定先后顺序
     # print p
     url=""
     if len(para) == 0:
