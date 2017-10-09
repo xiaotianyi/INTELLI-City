@@ -372,6 +372,7 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
+    print "sentence_result", sentence_result
     for el in sentence_result:
         print "sentence_result", unicode(el, "utf8", errors="ignore")
     point_result = pointquery(divide_result, points, devices, stations, para)
