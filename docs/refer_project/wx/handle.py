@@ -25,7 +25,7 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
                 print "show vioce text", content
-		replyMsg = reply.VoiceMsg(toUser, fromUser, content)
+		        replyMsg = reply.VoiceMsg(toUser, fromUser, content)
                 return replyMsg.send()
             else:
                 print "暂且不处理"
@@ -34,16 +34,15 @@ class Handle(object):
             return Argment
 
     def GET(self):
-
         try:
-            webdata=web.input()
+            webdata = web.input()
             print webdata
-            result=showReply(webdata.query)
+            result = showReply(webdata.query)
             print result
             web.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
             web.header('Access-Control-Allow-Origin','*')
             web.header('Access-Control-Allow-Credentials','true')
             # web.header('content-type','text/json')
-            return json.dumps({'response':result})
+            return json.dumps({'response': result})
         except:
             return 0

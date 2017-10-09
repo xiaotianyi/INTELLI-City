@@ -26,7 +26,7 @@ sys.setdefaultencoding('utf-8')
 # sentence = sentence.replace(' ', '')
 
 
-def mergePositions(l):
+def merge_positions(l):
     positions = {}
     for x in l:
         for y in x:
@@ -102,22 +102,22 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     return qType
 
 
-def pointquery(li,points,devices,stations,para):
-    #"获取某个监测点的数据"
-    point=""
-    device=""
-    station=""
+def pointquery(li, points, devices, stations, para):
+    # "获取某个监测点的数据"
+    point = ""
+    device = ""
+    station = ""
     for w in li:
-        word=w[0]
+        word = w[0]
         # print 1
         if points.has_key(word):
-            point=word
+            point = word
         elif devices.has_key(word):
             device=word
         elif stations.has_key(word):
             station=word
     if point!="" and station!="" and device!="":
-        url ="/data/point_info_with_real_time?station_name="+station+"&device_name="+device+"&point_name="+point
+        url = "/data/point_info_with_real_time?station_name="+station+"&device_name="+device+"&point_name="+point
         return getResult(url)
     else:
         return 0
@@ -303,24 +303,24 @@ def connectTuring(a):
     return reson['text']
 
 
-def toUTF8(origin):
-    # change unicode type dict to UTF-8
-    result = {}
-    for x in origin.keys():
-        val = origin[x].encode('utf-8')
-        x = x.encode('utf-8')
-        result[x] = val
-    return result
+# def toUTF8(origin):
+#     # change unicode type dict to UTF-8
+#     result = {}
+#     for x in origin.keys():
+#         val = origin[x].encode('utf-8')
+#         x = x.encode('utf-8')
+#         result[x] = val
+#     return result
 
 
-def showDict(l):
-    for x in l.keys():
-        print x + ' ' + str(l[x])
+# def showDict(l):
+#     for x in l.keys():
+#         print x + ' ' + str(l[x])
 
 
-def showList(l):
-    for x in l:
-        print x
+# def showList(l):
+#     for x in l:
+#         print x
 
 
 def test(sentence):
@@ -337,7 +337,7 @@ def test(sentence):
     # print "test6 stations", stations
     devices = getPosition('devices')
     # print "test7 devices", devices
-    positions = mergePositions([cities, towns, stations, devices])
+    positions = merge_positions([cities, towns, stations, devices])
     # print "test8 positions", positions
     points = getPoints()
     # print "test9 points", points
@@ -415,6 +415,7 @@ def test(sentence):
                 return '没有相关数据信息'
             else:
                 return re_info[:100]
+
 
 # test()
 def showReply(sentence):
