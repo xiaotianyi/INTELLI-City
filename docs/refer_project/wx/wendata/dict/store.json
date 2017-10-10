@@ -18,4 +18,4 @@
 {"查询 实时 stations devices points": ["/data/point_info_with_real_time?station_name=","&device_name=","&point_name="]}
 {"查询 智慧灯杆 气象 天气": "http://fake data"}
 {"查询 全部 工具包": "http://10.52.14.182:5005/toolkit/toolkits/public"}
-{"查询 监控 视频": "http://10.52.14.182:5005/xxx"}
+{"查询 实时 监控 视频": "http://60.190.248.2:9990/videos/play/IMG_8056.MOV"}
