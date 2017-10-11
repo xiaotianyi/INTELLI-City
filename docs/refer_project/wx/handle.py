@@ -43,10 +43,12 @@ class Handle(object):
 
     def GET(self):
         try:
-            webdata = web.input()
-            print webdata
-            result = showReply(webdata.query)
-            print result
+            web_data = web.input()
+            print "Handle GET webData is ", receive.parse_xml(web_data)  # 后台打日志
+
+            result = showReply(web_data.query)
+            print "Reply Message", result
+
             web.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
             web.header('Access-Control-Allow-Origin','*')
             web.header('Access-Control-Allow-Credentials','true')
