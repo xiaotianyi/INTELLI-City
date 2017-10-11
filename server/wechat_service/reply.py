@@ -17,7 +17,8 @@ class TextMsg(Msg):
         self.__dict = dict()
         self.__dict['ToUserName'] = toUserName
         self.__dict['FromUserName'] = fromUserName
-        self.__dict['CreateTime'] = int(time.time())
+        # self.__dict['CreateTime'] = int(time.time())
+        self.__dict['CreateTime'] = str(time.time())
         self.__dict['Content'] = showReply(content)
         # print showReply(content)
 
@@ -39,7 +40,8 @@ class ImageMsg(Msg):
         self.__dict = dict()
         self.__dict['ToUserName'] = toUserName
         self.__dict['FromUserName'] = fromUserName
-        self.__dict['CreateTime'] = int(time.time())
+        # self.__dict['CreateTime'] = int(time.time())
+        self.__dict['CreateTime'] = str(time.time())
         self.__dict['MediaId'] = mediaId
 
     def send(self):
@@ -63,8 +65,7 @@ class VoiceMsg(Msg):
         self.__dict['ToUserName'] = toUserName
         self.__dict['FromUserName'] = fromUserName
         self.__dict['CreateTime'] = int(time.time())
-        self.__dict['Content'] = "语音: " + content + '\n' + '\n' + showReply(content)
-        # print showReply(content)
+        self.__dict['Content'] = "语音: " + content + '\n\n' + showReply(content)
 
     def send(self):
         XmlForm = """
