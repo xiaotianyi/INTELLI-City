@@ -18,7 +18,7 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
-                print replyMsg
+                print "Handle Post webdata is ", replyMsg
                 return replyMsg.send()
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'voice':
                 toUser = recMsg.FromUserName
