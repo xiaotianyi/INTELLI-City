@@ -2,9 +2,8 @@
 # filename: handle.py
 import json
 import hashlib
-
 import web
-# TODO
+
 from wenpl.divide import showReply
 
 import receive
@@ -15,7 +14,7 @@ class Handle(object):
     def POST(self):
         try:
             webData = web.data()
-            print "Handle Post webdata is ", webData   #后台打日志
+            print "Handle Post webdata is ", webData  # 后台打日志
             recMsg = receive.parse_xml(webData)
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
@@ -39,14 +38,14 @@ class Handle(object):
 
     def GET(self):
         try:
-            webdata=web.input()
+            webdata = web.input()
             print webdata
-            result=showReply(webdata.query)
+            result = showReply(webdata.query)
             print result
             web.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-            web.header('Access-Control-Allow-Origin','*')
-            web.header('Access-Control-Allow-Credentials','true')
+            web.header('Access-Control-Allow-Origin', '*')
+            web.header('Access-Control-Allow-Credentials', 'true')
             # web.header('content-type','text/json')
-            return json.dumps({'response':result})
+            return json.dumps({'response': result})
         except:
             return 0
