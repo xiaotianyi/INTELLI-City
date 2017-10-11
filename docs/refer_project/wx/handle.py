@@ -11,24 +11,32 @@ class Handle(object):
     def POST(self):
         try:
             webData = web.data()
-            print "Handle Post webdata is ", webData   #后台打日志
             recMsg = receive.parse_xml(webData)
+
             if isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
+                print "Handle Post webData(text) is ", content  # 后台打日志
+
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
-                print "Handle Post webdata is ", replyMsg
+                print "Reply Message", replyMsg
+
                 return replyMsg.send()
+
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'voice':
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 content = recMsg.Content
-                print "show vioce text", content
+                print "Handle Post webData(voice) is ", content  # 后台打日志
+
                 replyMsg = reply.VoiceMsg(toUser, fromUser, content)
+                print "Reply Message", replyMsg
+
                 return replyMsg.send()
+
             else:
-                print "暂且不处理"
+                print "INPUT TYPE ERROR: 目前只支持处理文字/语音，其它暂不处理"
                 return "success"
         except Exception, Argment:
             return Argment
