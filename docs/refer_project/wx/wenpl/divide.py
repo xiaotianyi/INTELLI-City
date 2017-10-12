@@ -301,7 +301,7 @@ def connectTuring(a):
     kurl = '/root/INTELLI-City/docs/refer_project/wx/wendata/turkey'
     fin = open(kurl, 'r+')
     key = fin.read()
-    url = r'http://www.tuling123.com/openapi/api?key=' + key + '&info=' + a
+    url = r'http://www.tuling123.com/openapi/api?key=' + key + '&loc=杭州市' + '&info=' + a
     print 'turing url', url
     reson = urllib2.urlopen(url)
     reson = json.loads(reson.read())
