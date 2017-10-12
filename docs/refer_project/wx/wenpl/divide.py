@@ -302,6 +302,7 @@ def connectTuring(a):
     fin = open(kurl, 'r+')
     key = fin.read()
     url = r'http://www.tuling123.com/openapi/api?key=' + key + '&info=' + a
+    print 'turing url', url
     reson = urllib2.urlopen(url)
     reson = json.loads(reson.read())
     fin.close()
