@@ -19,7 +19,7 @@ def pre_process(sentence):
     sentence = sentence.replace(' ', '')
 
     # 获取特殊的人名、地点、设备、采集点字段
-    NLP_process.foo()
+    NLP_process.prepare_dicts()
 
     # 拿到分词结果，list of [words, verb]
     divided_result = [[el.word, el.flag] for el in pseg.cut(sentence)]

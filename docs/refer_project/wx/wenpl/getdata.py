@@ -12,6 +12,9 @@ import copy
 import datetime
 import time
 import calendar
+import os
+
+cwd = os.getcwd()
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -97,6 +100,7 @@ def getPoints():
 
 
 def getPeople():
+    print 'working dir', cwd
     people = {}
     purl = url1+peoples
     fin = open(purl, 'r+')
