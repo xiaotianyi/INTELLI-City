@@ -22,6 +22,7 @@ jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict2
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+# test测试用
 # sentence = "杭州市 报警数量"  
 # sentence = sentence.replace(' ', '')
 
@@ -36,8 +37,6 @@ def merge_positions(l):
 
 
 def divide(str):
-    # print str
-    # return the unicode format result
     words = pseg.cut(str)
     li = []
     for w in words:
@@ -81,8 +80,7 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     hasPosition = 0
     hasName = 0
     paradic = {}
-    # print "dict", dictionary
-    # print pro
+
     print 'li', li
     for w in li:
         word = w[0]
@@ -95,7 +93,6 @@ def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
             if word in paraCategory.keys():
                 paradic[paraCategory[word]] = word
     # print "qType", qType
-    # print "Nkey", Nkey
     # print "para", para
     for x in paradic.values():
         para.append(x)
@@ -330,37 +327,22 @@ def connectTuring(a):
 
 
 def test(sentence):
-    # print "test1 sentence", sentence
     sentence = sentence.replace(' ', '')
-    # print "test2 sentence", sentence
     people = getPeople()
-    # print "test3 people", people
     cities = getPosition('cities')
-    # print "test4 cities", cities
     towns = getPosition('towns')
-    # print "test5 towns", towns
     stations = getPosition('stations')
-    # print "test6 stations", stations
     devices = getPosition('devices')
-    # print "test7 devices", devices
     positions = merge_positions([cities, towns, stations, devices])
-    # print "test8 positions", positions
     points = getPoints()
-    # print "test9 points", points
     pro = getPros()
-    # print "test10 pro", pro
     general = getGenerals()
-    # print "test11 general", general
     paraCategory = dict(positions, **people)
-    # print "test12 paraCategory", paraCategory
     dict1 = dict(general, **pro)
-    # print "test dict1", dict1
     dict2 = dict(dict1, **paraCategory)
-    # print "test dict2", dict2
     st = getStore()  # store dict
-    # print "get store", st
     para = []
-    # print "test para", para
+
     keyphrase = pro.keys()
     paraDict = paraFilter(st)
     # print "test paraDict", paraDict
@@ -368,6 +350,7 @@ def test(sentence):
     # print "test date", date
     ftype=0
     remember=[]
+
     divide_result = divide(sentence)  # list
     print "devide_result", divide_result
 
@@ -377,9 +360,9 @@ def test(sentence):
         para,
         pro,
         paraCategory)  # set
-    print "sentence_result", sentence_result
-    for el in sentence_result:
-        print "sentence_result", unicode(el, "utf8", errors="ignore")
+    # for el in sentence_result:
+    #     print "sentence_result", unicode(el, "utf8", errors="ignore")
+
     point_result = pointquery(divide_result, points, devices, stations, para)
     if point_result != 0:
         # print get_point_info_with_real_time(json.loads(point_result))
@@ -427,8 +410,6 @@ def test(sentence):
 # test()
 def showReply(sentence):
     sentence = str(sentence)
-    # print "sentence", sentence
-    # return test(sentence)
     try:
         return test(sentence)
     except Exception as e:
