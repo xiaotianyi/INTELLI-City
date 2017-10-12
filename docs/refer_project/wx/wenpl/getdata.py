@@ -19,7 +19,8 @@ cwd = os.getcwd()
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-url1 = "/root/INTELLI-City/docs/refer_project/wx/wendata/dict/"
+# url1 = "/root/INTELLI-City/docs/refer_project/wx/wendata/dict/"
+url1 = cwd + "/wendata/dict/"
 time = "time.json"
 stores = "store.json"
 pro = "pro.json"
@@ -100,7 +101,6 @@ def getPoints():
 
 
 def getPeople():
-    print 'working dir', cwd
     people = {}
     purl = url1+peoples
     fin = open(purl, 'r+')
