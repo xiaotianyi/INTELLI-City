@@ -306,7 +306,6 @@ def connectTuring(a):
     reson = urllib2.urlopen(url)
     reson = json.loads(reson.read())
     fin.close()
-    # print reson['text'],'\n'
     return reson['text']
 
 
