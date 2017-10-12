@@ -331,6 +331,7 @@ def connectTuring(a):
 
 def test(sentence):
     sentence = sentence.replace(' ', '')
+
     people = getPeople()
     cities = getPosition('cities')
     towns = getPosition('towns')
@@ -348,9 +349,7 @@ def test(sentence):
 
     keyphrase = pro.keys()
     paraDict = paraFilter(st)
-    # print "test paraDict", paraDict
     date = parseDate(sentence)
-    # print "test date", date
     ftype=0
     remember=[]
 
@@ -413,10 +412,12 @@ def test(sentence):
 # test()
 def showReply(sentence):
     sentence = str(sentence)
-    try:
-        return test(sentence)
-    except Exception as e:
-        return '我好像不太明白·_·'
+    # try:
+    #     return test(sentence)
+    # except Exception as e:
+    #     return '我好像不太明白·_·'
+    return test(sentence)
+
 
 # print showReply("查询工单")
 
