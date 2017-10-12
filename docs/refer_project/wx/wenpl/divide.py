@@ -220,9 +220,13 @@ def getResult(url):
     fin1 = open(turl, 'r+')
     token = fin1.read()
     web_flag = 0
+    print "url", url
+
     if url[:4] != "http":
         url = 'http://www.intellense.com:3080' + url
         web_flag = 1
+        print "url", url
+
     elif url == "http://60.190.248.2:9990/django_cas/login":
         return ("请先完成注册!\n点击如下网址: " + url, 1)
     elif url == "http://60.190.248.2:9990/videos/play/IMG_8056.MOV":
@@ -230,7 +234,6 @@ def getResult(url):
     elif url == "http://fake data":
         return ("探测到用户所在位置: 杭州\n——实时气象信息——\n温度: 24摄氏度、\n相对湿度: 68%、\n降水量: 0mm、\n风力风向: 东风3级、\n空气质量: 49 优", 1)
 
-    print "url", url
 
     req = urllib2.Request(url)
     req.add_header('authorization', token) if web_flag else None
