@@ -26,7 +26,7 @@ def pre_process(sentence):
     # print "divided_result", [utf_print(el[0]) for el in divided_result]
 
     # 分词结果需要考虑是否带有人名、地点和时间等信息，有的话需要加入关键词表
- 
+
 
 # 需要放入UTILITY, 用于打印类似于/ex17之类的utf字段
 def utf_print(element):
