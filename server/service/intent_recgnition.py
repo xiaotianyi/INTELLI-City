@@ -8,7 +8,7 @@ import copy
 import jieba
 import jieba.posseg as pseg
 
-from server.lib import NLP_process
+from server.lib import NLP_process, jieba_process
 
 
 reload(sys)
@@ -16,10 +16,10 @@ sys.setdefaultencoding('utf-8')
 
 
 def pre_process(sentence):
-    sentence = sentence.replace(' ', '')
+    sentence = str(sentence).replace(' ', '')
 
     # 获取特殊的人名、地点、设备、采集点字段
-    NLP_process.prepare_dicts()
+    jieba_process.prepare_dicts()
 
     # 拿到分词结果，list of [words, verb]
     divided_result = [[el.word, el.flag] for el in pseg.cut(sentence)]
