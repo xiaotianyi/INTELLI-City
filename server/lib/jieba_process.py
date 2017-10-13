@@ -13,6 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 cwd = os.getcwd()
+dict_url = cwd + '/lib/'
 
 # main called function
 def prepare_dicts():
@@ -33,4 +34,4 @@ def prepare_dicts():
 
 
 def get_people():
-    pass
+    people = {}
