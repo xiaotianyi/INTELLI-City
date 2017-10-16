@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 # 拿到工作路径
 cwd = os.getcwd()
 dict_url = cwd + '/lib/data_base/'
-intellence = dict_url + "intellence.json"
+intellence_url = dict_url + "intellence.json"
 
 
 # main called function
@@ -37,5 +37,19 @@ def prepare_dicts():
 
 
 # 动环数据获取
-def get_people():
-    people = {}
+def get_intellence():
+    intellence = {}
+    file = open(intellence_url, 'r').read()
+    json = json.loads(file)
+    intellence = to
+
+
+# change unicode type dict to UTF-8
+def to_utf8(uni_dict):
+    utf_result = {}
+    for key, value in enumerate(uni_dict):
+        new_el = {key.encode('utf-8'): value.encode('utf-8')}
+        val = uni_str[el].encode('utf-8')
+        el = el.encode('utf-8')
+        result[el] = val
+    return result
