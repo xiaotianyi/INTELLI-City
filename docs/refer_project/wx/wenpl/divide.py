@@ -333,17 +333,21 @@ def test(sentence):
     sentence = sentence.replace(' ', '')
 
     people = getPeople()
+    print "1"
     cities = getPosition('cities')
     towns = getPosition('towns')
     stations = getPosition('stations')
     devices = getPosition('devices')
+    print "11"
     positions = merge_positions([cities, towns, stations, devices])
     points = getPoints()
     pro = getPros()
     general = getGenerals()
+    print "111"
     paraCategory = dict(positions, **people)
     dict1 = dict(general, **pro)
     dict2 = dict(dict1, **paraCategory)
+    print "1111"
     st = getStore()  # store dict
     para = []
 
@@ -353,6 +357,7 @@ def test(sentence):
     ftype=0
     remember=[]
 
+    print "prepare data ready"
     divide_result = divide(sentence)  # list
     print "devide_result", divide_result
 
