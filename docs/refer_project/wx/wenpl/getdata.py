@@ -26,7 +26,8 @@ stores = "store.json"
 pro = "pro.json"
 general = "general.json"
 point = "points.json"
-peoples = "intellence.json"
+# peoples = "intellence.json"
+peoples = "people.json"
 
 # 为了代码方便，先不写在文件里，测试用
 api_platform = {
