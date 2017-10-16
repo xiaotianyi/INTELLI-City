@@ -330,6 +330,7 @@ def connectTuring(a):
 
 
 def test(sentence):
+    print "1inn"
     sentence = sentence.replace(' ', '')
 
     people = getPeople()
@@ -416,6 +417,7 @@ def test(sentence):
 
 # test()
 def showReply(sentence):
+    print "inn"
     sentence = str(sentence)
     # try:
     #     return test(sentence)
