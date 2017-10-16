@@ -12,8 +12,11 @@ import jieba.posseg as pseg
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+# 拿到工作路径
 cwd = os.getcwd()
-dict_url = cwd + '/lib/'
+dict_url = cwd + '/lib/data_base/'
+intellence = dict_url + "intellence.json"
+
 
 # main called function
 def prepare_dicts():
@@ -33,5 +36,6 @@ def prepare_dicts():
     pass
 
 
+# 动环数据获取
 def get_people():
     people = {}

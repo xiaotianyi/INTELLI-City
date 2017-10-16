@@ -26,7 +26,7 @@ stores = "store.json"
 pro = "pro.json"
 general = "general.json"
 point = "points.json"
-peoples = "people.json"
+peoples = "intellence.json"
 
 # 为了代码方便，先不写在文件里，测试用
 api_platform = {
@@ -60,16 +60,6 @@ def getStore():
     return store
 
 
-def getPosition(type):
-    purl = url1 + type + ".json"
-    fin = open(purl, 'r+')
-    p = fin.read()
-    jp = json.loads(p)
-    pros = toUTF8(jp)
-    # print positions
-    return pros
-
-
 def getPros():
     pros = {}
     purl = url1+pro
@@ -90,6 +80,7 @@ def getGenerals():
     # print generals
     return generals
 
+
 def getPoints():
     generals = {}
     purl = url1+point
@@ -108,6 +99,16 @@ def getPeople():
     jp = json.loads(p)
     people = toUTF8(jp)
     return people
+
+
+def getPosition(type):
+    purl = url1 + type + ".json"
+    fin = open(purl, 'r+')
+    p = fin.read()
+    jp = json.loads(p)
+    pros = toUTF8(jp)
+    # print positions
+    return pros
 
 
 def getDict(url):

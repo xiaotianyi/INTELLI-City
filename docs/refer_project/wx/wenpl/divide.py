@@ -227,7 +227,7 @@ def getResult(url):
         web_flag = 1
         print "url", url
 
-    elif url == "http://60.190.248.2:9990/django_cas/login":
+    elif url == "http://122.227.52.114:53306/django_cas/":
         return ("请先完成注册!\n点击如下网址: " + url, 1)
     elif url == "http://60.190.248.2:9990/videos/play/IMG_8056.MOV":
         return ("监控视频请打开如下网址:\n " + url, 1)
