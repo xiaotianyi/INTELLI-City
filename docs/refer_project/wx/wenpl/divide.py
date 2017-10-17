@@ -64,7 +64,7 @@ def paraFilter(store):
             j = re.findall(r'\w+', y)
             if j != []:
                 dictionary[x].append(j)
-    # print dictionary
+    print "dictionary", dictionary
     return dictionary
 
 
@@ -338,18 +338,19 @@ def test(sentence):
     stations = getPosition('stations')
     devices = getPosition('devices')
     positions = merge_positions([cities, towns, stations, devices])
-    points = getPoints()
+
     pro = getPros()
     general = getGenerals()
-    print "111"
+
     paraCategory = dict(positions, **people)
     dict1 = dict(general, **pro)
     dict2 = dict(dict1, **paraCategory)
-    print "1111"
+
+    points = getPoints()
     st = getStore()  # store dict
     para = []
 
-    keyphrase = pro.keys()
+    # keyphrase = pro.keys()
     paraDict = paraFilter(st)
     date = parseDate(sentence)
     ftype=0
