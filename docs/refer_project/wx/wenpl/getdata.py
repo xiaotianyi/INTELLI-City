@@ -120,6 +120,7 @@ def getDict(url):
     except Exception as e:
         print e
 
+
 def toUTF8(origin):
     # change unicode type dict to UTF-8
     result = {}

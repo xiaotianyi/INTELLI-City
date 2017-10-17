@@ -20,6 +20,8 @@ class Handle(object):
                 print "Handle Post webData(text) is ", content  # 后台打日志
 
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
+                print "fromUser", fromUser
+                print "toUser", toUser
                 print "Reply Message", replyMsg
 
                 return replyMsg.send()

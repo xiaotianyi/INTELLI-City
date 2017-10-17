@@ -38,18 +38,15 @@ def prepare_dicts():
 
 # 动环数据获取
 def get_intellence():
-    intellence = {}
     file = open(intellence_url, 'r').read()
     json = json.loads(file)
-    intellence = to
+    intellence = to_utf8(json)
+    return intellence
 
 
 # change unicode type dict to UTF-8
 def to_utf8(uni_dict):
     utf_result = {}
     for key, value in enumerate(uni_dict):
-        new_el = {key.encode('utf-8'): value.encode('utf-8')}
-        val = uni_str[el].encode('utf-8')
-        el = el.encode('utf-8')
-        result[el] = val
-    return result
+        utf_result[key.encode('utf-8')] = value.encode('utf-8')
+    return utf_result
