@@ -333,12 +333,10 @@ def test(sentence):
     sentence = sentence.replace(' ', '')
 
     people = getPeople()
-    print "1"
     cities = getPosition('cities')
     towns = getPosition('towns')
     stations = getPosition('stations')
     devices = getPosition('devices')
-    print "11"
     positions = merge_positions([cities, towns, stations, devices])
     points = getPoints()
     pro = getPros()
