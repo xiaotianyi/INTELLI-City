@@ -26,7 +26,7 @@ def parseCommonExpressionDate(sentence):
     '''
     把常规说法换成日期区间
     '''
-    preDate = getDate()
+    preDate = get_date()
     words = []
     timeList = []
     tag = []
@@ -520,15 +520,15 @@ def operatetimeList(timeList,tag):
     return returnList
 
 
-def getDate():
-    pros = {}
-    # purl = "/root/wechat/wx/wendata/dict/time.json"
-    purl = "/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/time.json"
+def get_date():
+    import os
+    cwd = os.getcwd()
+    purl = cwd + "/lib/data_base/time.json"
     fin = open(purl, 'r+')
     p = fin.read()
     jp = json.loads(p)
     pros = toUTF8(jp)
-    # print positionsge
+    fin.close()
     return pros
 
 

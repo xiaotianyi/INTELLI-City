@@ -53,6 +53,7 @@ def get_dict(file_name):
     file = open(url, 'r+').read()
     json = json.loads(file)
     result = to_utf8(json)
+    file.close()
     return result
 
 

@@ -70,6 +70,7 @@ def get_platform():
     pass
 
 
+# sentence_result = getQueryTypeSet(divide_result, dict2, para, pro, paraCategory)
 def getQueryTypeSet(li, dictionary, para, pro, paraCategory):
     # calculate the types of the query words
     # showp()
@@ -119,7 +120,7 @@ def pointquery(li, points, devices, stations, para):
     else:
         return 0
 
-        
+
 def getPrefixHit(qType, store):
     # calculate the hit times of each prefix sentences in store
     count = {}
@@ -422,4 +423,3 @@ def showReply(sentence):
 
 
 # print showReply("查询工单")
-
