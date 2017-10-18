@@ -19,7 +19,7 @@ class TextMsg(Msg):
         self.__dict['FromUserName'] = fromUserName
         # self.__dict['CreateTime'] = int(time.time())
         self.__dict['CreateTime'] = str(time.time())
-        self.__dict['Content'] = showReply(content)
+        self.__dict['Content'] = show_reply(content)
         # print showReply(content)
 
     def send(self):

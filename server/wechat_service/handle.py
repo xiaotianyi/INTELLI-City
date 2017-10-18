@@ -7,7 +7,7 @@ import web
 
 import receive
 import reply
-from wenpl.divide import showReply
+from server.service.reply_show import show_reply
 
 
 class Handle(object):
@@ -45,13 +45,14 @@ class Handle(object):
         except Exception, Argment:
             return Argment
 
+
     # TODO 理解一下get方法的目的
     def GET(self):
         try:
             web_data = web.input()
             print "Handle GET webData is ", receive.parse_xml(web_data)  # 后台打日志
 
-            result = showReply(web_data.query)
+            result = show_reply(web_data.query)
             print "Reply Message", result
 
             web.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
