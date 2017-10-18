@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # filename: reply.py
 import time
-from wenpl.divide import showReply
+from server.service.reply_show import show_reply
 
 
 class Msg(object):
@@ -65,7 +65,7 @@ class VoiceMsg(Msg):
         self.__dict['ToUserName'] = toUserName
         self.__dict['FromUserName'] = fromUserName
         self.__dict['CreateTime'] = int(time.time())
-        self.__dict['Content'] = "语音: " + content + '\n\n' + showReply(content)
+        self.__dict['Content'] = "语音: " + content + '\n\n' + show_reply(content)
 
     def send(self):
         XmlForm = """
