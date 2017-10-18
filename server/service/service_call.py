@@ -19,3 +19,38 @@ def connect_turing(sentence):
     response = json.loads(response)['text']
 
     return response
+
+
+def connect_rest_api(paras, token):
+    if paras == 0:
+        pass
+    elif paras == 1:
+        pass
+    else:
+        pass
+
+    url = ""
+    web_flag = 0
+
+    if url == 0:
+        url = 'http://www.intellense.com:3080' + url
+        web_flag = 1
+
+    elif url == 1:
+        web_flag = 1
+        # return
+    elif url == 2:
+        web_flag = 2
+        # return
+    elif url == 3:
+        web_flag = 3
+        # return
+    else:
+        pass
+
+    req = urllib2.Request(url)
+    req.add_header('authorization', token) if web_flag else None
+    response = urllib2.urlopen(req)
+
+    return response.read(), web_flag
+
