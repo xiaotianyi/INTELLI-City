@@ -20,6 +20,7 @@ def pre_process(sentence):
 
     # 获取特殊的人名、地点、设备、采集点字段
     jieba_process.prepare_dicts()
+    date_in_sentence = parse_data(sentence)
 
     # 拿到分词结果，list of [words, verb]
     divided_result = [[el.word, el.flag] for el in pseg.cut(sentence)]

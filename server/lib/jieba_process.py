@@ -15,7 +15,6 @@ sys.setdefaultencoding('utf-8')
 # 拿到工作路径
 cwd = os.getcwd()
 dict_url = cwd + '/lib/data_base/'
-intellence_url = dict_url + "intellence.json"
 
 
 # main called function
@@ -25,7 +24,10 @@ def prepare_dicts():
     # towns = getPosition('towns')
     # stations = getPosition('stations')
     # devices = getPositpassion('devices')
+
+    # TODO 需要对cities, towns, stations, devices进行转化
     # positions = merge_positions([cities, towns, stations, devices])
+
     # points = getPoints()
     # pro = getPros()
     # general = getGenerals()
@@ -33,15 +35,25 @@ def prepare_dicts():
     # dict1 = dict(general, **pro)
     # dict2 = dict(dict1, **paraCategory)
     # st = getStore()  # store dict
-    pass
+
+    # 加载各支持字典
+    platform_dict = get_dict("intellence.json")
+    pro_dict = get_dict("pro.json")
+    general_dict = get_dict("general.json")
+    words_dict = dict(pro_dict, general_dict)
+    all_dicts = dict(words_dict, **platform_dict)
+
+    # 加载api字典
+    api_dict = get_dict("api.json")
 
 
-# 动环数据获取
-def get_intellence():
-    file = open(intellence_url, 'r').read()
+# 各路存储的字典
+def get_dict(file_name):
+    url = dict_url + file_name
+    file = open(url, 'r+').read()
     json = json.loads(file)
-    intellence = to_utf8(json)
-    return intellence
+    result = to_utf8(json)
+    return result
 
 
 # change unicode type dict to UTF-8

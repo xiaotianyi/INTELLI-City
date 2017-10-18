@@ -60,6 +60,7 @@ def parseCommonExpressionDate(sentence):
             yearOfMonth[2]=str(numbers.tm_mday)
     return [timeList,tag,yearOfMonth]
 
+
 def parseCountExpressionDate(SENTENCE,TIMELIST,TAG,YEAROFMONTH):
     # 把几天前这种带数字的说法换成日期
     sentence=copy.deepcopy(SENTENCE)
@@ -96,6 +97,7 @@ def parseCountExpressionDate(SENTENCE,TIMELIST,TAG,YEAROFMONTH):
             yearOfMonth.append(str(numbers.tm_hour))
     return [timeList,tag,yearOfMonth,sentence]
 
+
 def toYMDH(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{4})年(\d{1,2})月(\d{1,2})日(\d{1,2})[点|时]', sentence)
     # print match
@@ -117,6 +119,7 @@ def toYMDH(sentence,timeList,tag,yearOfMonth):
         "",
         sentence)
 
+
 def toYMD(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{4})年(\d{1,2})月(\d{1,2})日', sentence)
     # print match
@@ -134,6 +137,7 @@ def toYMD(sentence,timeList,tag,yearOfMonth):
                 tag.append("ymd")
 
     return re.sub(r'(\d{4})年(\d{1,2})月(\d{1,2})日', "", sentence)
+
 
 def toMDH(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{1,2})月(\d{1,2})日(\d{1,2})[点|时]', sentence)
@@ -238,7 +242,6 @@ def toDH(sentence,timeList,tag,yearOfMonth):
                     yearOfMonth.append(match[x][1]) 
                     tag.append("dh")
 
-
     return re.sub(r'(\d{1,2})日(\d{1,2})[点|时]', "", sentence)
 
 
@@ -261,6 +264,7 @@ def toYM(sentence,timeList,tag,yearOfMonth):
 
     return re.sub(r'(\d{4})年(\d{1,2})月', "", sentence)
 
+
 def toY(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{4})年', sentence)
     # print match
@@ -275,6 +279,7 @@ def toY(sentence,timeList,tag,yearOfMonth):
                 tag.append("y")
 
     return re.sub(r'(\d{4})年', "", sentence)
+
 
 def toM(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{1,2})月', sentence)
@@ -309,6 +314,7 @@ def toM(sentence,timeList,tag,yearOfMonth):
                     tag.append("m")
     return re.sub(r'(\d{1,2})月', "", sentence)
 
+
 def toD(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{1,2})日', sentence)
     # print match
@@ -326,6 +332,7 @@ def toD(sentence,timeList,tag,yearOfMonth):
 
     return re.sub(r'(\d{1,2})日', "", sentence)
 
+
 def toH(sentence,timeList,tag,yearOfMonth):
     match = re.findall(r'(\d{1,2})[点|时]', sentence)
     # print match
@@ -338,7 +345,8 @@ def toH(sentence,timeList,tag,yearOfMonth):
                 timeList.append(tempStartTime)
                 tag.append("h")
 
-def parseDate(sentence):
+
+def parse_date(sentence):
     word = None
     timeList = []
     tag = []
@@ -362,19 +370,15 @@ def parseDate(sentence):
 
     #年月日时
     # print "--------年月日时--------"
-
     sentence1=toYMDH(sentence,timeList,tag,yearOfMonth)
 
     #年月日
     # print "--------年月日--------"
-    
     sentence2=toYMD(sentence1,timeList,tag,yearOfMonth)
 
     # 月日时
     # print "--------月日时--------"
     sentence3=toMDH(sentence2,timeList,tag,yearOfMonth)
-    
-
 
     # 月日
     # print "--------月日--------"
@@ -385,11 +389,9 @@ def parseDate(sentence):
 
     # 年月
     # print "--------年月--------"
-    
     sentence6=toYM(sentence5,timeList,tag,yearOfMonth)
     # 年
     # print "--------年--------"
-    
     sentence7=toY(sentence6,timeList,tag,yearOfMonth)
     # 月
     # print "--------月--------"
@@ -408,7 +410,6 @@ def parseDate(sentence):
     return normalizeDate(operatetimeList(timeList,tag))
 
 
-
 def acceptDate(sentence):
     # print sentence
     match=[]
@@ -421,10 +422,12 @@ def acceptDate(sentence):
             return False
     return True
 
+
 def compDate(l1,l2):
     c1=((l1.year*100+l1.month)*100+l1.day)*100+l1.hour
     c2=((l2.year*100+l2.month)*100+l2.day)*100+l2.hour
     return c1-c2
+
 
 def findMin(l,tag):
     mini=l[0]
@@ -436,6 +439,7 @@ def findMin(l,tag):
             t=tag[x]
     return [mini,t]
 
+
 def findMax(l,tag):
     maxi=l[0]
     t=tag[0]
@@ -445,8 +449,11 @@ def findMax(l,tag):
             t=tag[x]
     return [maxi,t]
 
+
 def conDate(y,m,d,h,mi,s):
     return str(y)+'-'+str(m)+'-'+str(d)+' '+str(h)+':'+str(mi)+':'+str(s)
+
+
 def normalizeDate(l):
     returnList=[]
     for x in l:
@@ -454,6 +461,7 @@ def normalizeDate(l):
         half=x.split(' ')
         returnList.append(half[0]+'%20'+half[1]+'.134Z')
     return returnList
+
 
 def operatetimeList(timeList,tag):
     timeListlen=len(timeList)
