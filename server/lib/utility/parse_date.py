@@ -10,10 +10,11 @@ import datetime
 import time
 import calendar
 
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict1.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_manual.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_date.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict2.txt')
+
+jieba.load_userdict('/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/dict1.txt')
+jieba.load_userdict('/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_manual.txt')
+jieba.load_userdict('/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_date.txt')
+jieba.load_userdict('/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/dict2.txt')
 reload(sys)
 sys.setdefaultencoding('utf-8')
 today = datetime.date.today()
@@ -407,6 +408,7 @@ def parseDate(sentence):
     return normalizeDate(operatetimeList(timeList,tag))
 
 
+
 def acceptDate(sentence):
     # print sentence
     match=[]
@@ -419,12 +421,10 @@ def acceptDate(sentence):
             return False
     return True
 
-
 def compDate(l1,l2):
     c1=((l1.year*100+l1.month)*100+l1.day)*100+l1.hour
     c2=((l2.year*100+l2.month)*100+l2.day)*100+l2.hour
     return c1-c2
-
 
 def findMin(l,tag):
     mini=l[0]
@@ -436,7 +436,6 @@ def findMin(l,tag):
             t=tag[x]
     return [mini,t]
 
-
 def findMax(l,tag):
     maxi=l[0]
     t=tag[0]
@@ -446,11 +445,8 @@ def findMax(l,tag):
             t=tag[x]
     return [maxi,t]
 
-
 def conDate(y,m,d,h,mi,s):
     return str(y)+'-'+str(m)+'-'+str(d)+' '+str(h)+':'+str(mi)+':'+str(s)
-
-
 def normalizeDate(l):
     returnList=[]
     for x in l:
@@ -458,7 +454,6 @@ def normalizeDate(l):
         half=x.split(' ')
         returnList.append(half[0]+'%20'+half[1]+'.134Z')
     return returnList
-
 
 def operatetimeList(timeList,tag):
     timeListlen=len(timeList)
@@ -519,7 +514,8 @@ def operatetimeList(timeList,tag):
 
 def getDate():
     pros = {}
-    purl = "/root/wechat/wx/wendata/dict/time.json"
+    # purl = "/root/wechat/wx/wendata/dict/time.json"
+    purl = "/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/time.json"
     fin = open(purl, 'r+')
     p = fin.read()
     jp = json.loads(p)
