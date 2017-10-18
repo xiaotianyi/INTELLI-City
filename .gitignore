@@ -11,3 +11,4 @@
 
 # Ignore .pyc file
 .pyc
+*.pyc
