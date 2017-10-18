@@ -25,10 +25,6 @@ jieba.load_userdict(cwd + '/wendata/dict/dict2.txt')
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# test测试用
-# sentence = "杭州市 报警数量"  
-# sentence = sentence.replace(' ', '')
-
 
 def merge_positions(l):
     positions = {}
@@ -36,7 +32,6 @@ def merge_positions(l):
         for y in x:
             positions[y] = 'position'
     return positions
-
 
 
 def divide(str):
