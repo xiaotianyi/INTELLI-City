@@ -1,6 +1,4 @@
 # encoding=utf-8
-import jieba.posseg as pseg
-import jieba
 import sys
 import urllib2
 import json
@@ -10,10 +8,7 @@ import datetime
 import time
 import calendar
 
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict1.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_manual.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict_date.txt')
-jieba.load_userdict('/root/wechat/wx/wendata/dict/dict2.txt')
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 today = datetime.date.today()
@@ -519,7 +514,11 @@ def operatetimeList(timeList,tag):
 
 def getDate():
     pros = {}
-    purl = "/root/wechat/wx/wendata/dict/time.json"
+    import os
+    purl = os.getcwd()
+    # purl = "/root/wechat/wx/wendata/dict/time.json"
+    # purl = "/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/time.json"
+    purl = purl + "/wendata/dict/time.json"
     fin = open(purl, 'r+')
     p = fin.read()
     jp = json.loads(p)
