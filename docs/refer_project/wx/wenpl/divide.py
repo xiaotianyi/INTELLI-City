@@ -2,6 +2,7 @@
 import jieba.posseg as pseg
 import jieba
 import sys
+import os
 import urllib2
 import json
 import re
@@ -13,11 +14,13 @@ from parsedate import parseDate
 from getdata import*
 from showAll import*
 
-jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict1.txt')
-jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_manual.txt')
-jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict_date.txt')
-jieba.load_userdict('/root/INTELLI-City/docs/refer_project/wx/wendata/dict/dict2.txt')
 
+cwd_url = os.getcwd()
+
+jieba.load_userdict(cwd + '/wendata/dict/dict1.txt')
+jieba.load_userdict(cwd + '/wendata/dict/dict_manual.txt')
+jieba.load_userdict(cwd + '/wendata/dict/dict_date.txt')
+jieba.load_userdict(cwd + '/wendata/dict/dict2.txt')
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -216,7 +219,8 @@ def getResult(url):
     # 有一条通服务期跳转的例子需要解决，如下
     # //{"查询 全部 工具包":"http://122.224.116.44:5005/toolkit/toolkits/public"}
 
-    turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
+    # turl = '/root/INTELLI-City/docs/refer_project/wx/wendata/token'
+    turl = cwd_url + '/wendata/token'
     fin1 = open(turl, 'r+')
     token = fin1.read()
     web_flag = 0
@@ -374,7 +378,6 @@ def test(sentence):
         # print get_point_info_with_real_time(json.loads(point_result))
         return get_point_info_with_real_time(json.loads(point_result))
     elif sentence_result == 0:
-        print "BUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUGBUG"
         return connectTuring(sentence)
     else:
         if date != 0:

@@ -19,7 +19,7 @@ cwd = os.getcwd()
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# url1 = "/root/INTELLI-City/docs/refer_project/wx/wendata/dict/"
+# url1 = "/Users/sky/project/INTELLI-City/docs/refer_project/wx/wendata/dict/"
 url1 = cwd + "/wendata/dict/"
 time = "time.json"
 stores = "store.json"
