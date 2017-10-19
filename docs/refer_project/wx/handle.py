@@ -7,6 +7,7 @@ import web
 from wenpl.divide import showReply
 import json
 
+
 class Handle(object):
     def POST(self):
         try:
@@ -23,7 +24,9 @@ class Handle(object):
                 print "Reply Message", dir(replyMsg)
                 print "Reply Message", replyMsg.__dict__
 
-                return replyMsg.send()
+                tmp = replyMsg.send()
+                print "tmp", tmp
+                return tmp
 
             elif isinstance(recMsg, receive.Msg) and recMsg.MsgType == 'voice':
                 toUser = recMsg.FromUserName
