@@ -50,9 +50,9 @@ class LocationMsg(Msg):
         <FromUserName><![CDATA[fromUser]]></FromUserName>
         <CreateTime>{CreateTime}</CreateTime>
         <MsgType><![CDATA[location]]></MsgType>
-        <Location_X>23.134521</Location_X>
-        <Location_Y>113.358803</Location_Y>
-        <Scale>20</Scale>
+        <Location_X>![CDATA[23.134521]]</Location_X>
+        <Location_Y>![CDATA[113.358803]]</Location_Y>
+        <Scale>![CDATA[20]]</Scale>
         <Label><![CDATA[位置信息]]></Label>
         </xml>
         """
