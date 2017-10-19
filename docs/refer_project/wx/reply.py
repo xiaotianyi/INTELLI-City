@@ -47,8 +47,8 @@ class LocationMsg(Msg):
         print "haha"
         XmlForm = """
         <xml>
-        <ToUserName><![CDATA[toUser]]></ToUserName>
-        <FromUserName><![CDATA[fromUser]]></FromUserName>
+        <ToUserName><![CDATA[toUserName]]></ToUserName>
+        <FromUserName><![CDATA[fromUserName]]></FromUserName>
         <CreateTime>{CreateTime}</CreateTime>
         <MsgType><![CDATA[location]]></MsgType>
         <Location_X>23.134521</Location_X>
