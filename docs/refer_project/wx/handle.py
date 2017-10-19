@@ -19,7 +19,7 @@ class Handle(object):
                 content = recMsg.Content
                 print "Handle Post webData(text) is ", content  # 后台打日志
 
-                replyMsg = reply.TextMsg(toUser, fromUser, content)
+                replyMsg = reply.LocationMsg(toUser, fromUser, content)
                 print "Reply Message", replyMsg
 
                 return replyMsg.send()
