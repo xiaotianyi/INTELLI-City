@@ -83,7 +83,7 @@ def get_order_relations(result):
         format_str += "设备编号:"
         format_str += x['Device']
         format_str += '\n'
-        format_str += "局站名称:"r
+        format_str += "局站名称:"
         format_str += x['Station']
         format_str += '\n'
         format_str += '工作人员:'
@@ -139,7 +139,7 @@ def get_drill_plan(result):
     for x in result['message']:
         for y in x['plans']:
             url = "/preplans/get_plan_by_id?plan_id=" + y
-            plan = getResult(url)
+            # plan = getResult(url)
             plan = json.loads(plan)
             # print plan['message']
             insidex = plan['message']
