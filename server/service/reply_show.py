@@ -74,7 +74,6 @@ def get_public_toolkit(result):
             # format_str += "简介: " + item["description"] + "\n"
             count += 1
         format_str += "\n"
-    # print "inn done", r_str
     return format_str
 
 
