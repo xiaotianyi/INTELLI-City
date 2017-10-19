@@ -43,6 +43,7 @@ class LocationMsg(Msg):
         # print showReply(content)
 
     def send(self):
+        print "haha"
         XmlForm = """
         <xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
