@@ -64,80 +64,79 @@ def show_diff_result(result, types):
 
 
 def get_public_toolkit(result):
-    r_str = ""
+    format_str = ""
     res = result['response']
     for key in res:
-        r_str += key + ":\n"
+        format_str += key + ":\n"
         count = 1
         for item in res[key]:
-            r_str += str(count) + ":" + item["name"] + "\n"
-            # r_str += "简介: " + item["description"] + "\n"
+            format_str += str(count) + ":" + item["name"] + "\n"
+            # format_str += "简介: " + item["description"] + "\n"
             count += 1
-        r_str += "\n"
+        format_str += "\n"
     # print "inn done", r_str
-    return r_str
+    return format_str
 
 
 def get_order_relations(result):
-    rstr = ""
+    format_str = ""
     for x in result['message']:
-        rstr += "设备编号:"
-        rstr += x['Device']
-        rstr += '\n'
-        rstr += "局站名称:"
-        rstr += x['Station']
-        rstr += '\n'
-        rstr += '工作人员:'
-        rstr += '\n'
+        format_str += "设备编号:"
+        format_str += x['Device']
+        format_str += '\n'
+        format_str += "局站名称:"r
+        format_str += x['Station']
+        format_str += '\n'
+        format_str += '工作人员:'
+        format_str += '\n'
         for worker in x['Worker_Id']:
-            rstr += worker['name']
-            rstr += '\n工号:'
-            rstr += worker['id']
-            rstr += '\n'
-        rstr += '\n\n'
-    # print "r_str", rstr
-    return rstr
+            format_str += worker['name']
+            format_str += '\n工号:'
+            format_str += worker['id']
+            format_str += '\n'
+        format_str += '\n\n'
+    return format_str
 
 
 def get_device_type(result):
-    rstr = ""
+    format_str = ""
     for x in result['response'].values():
-        rstr += x
-        rstr += '\n'
-    return rstr
+        format_str += x
+        format_str += '\n'
+    return format_str
 
 
 def monitoring_manage_get_devices(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "设备ID:"
-        rstr += x['ID']
-        rstr += '\n'
-        rstr += "设备类型:"
-        rstr += x['device_type']
-        rstr += '\n'
-        rstr += "设备名称:"
-        rstr += x['name']
-        rstr += '\n'
-        rstr += "设备位置:"
+        format_str += "设备ID:"
+        format_str += x['ID']
+        format_str += '\n'
+        format_str += "设备类型:"
+        format_str += x['device_type']
+        format_str += '\n'
+        format_str += "设备名称:"
+        format_str += x['name']
+        format_str += '\n'
+        format_str += "设备位置:"
         for y in x['parents'].values():
-            rstr += y
-            rstr += " "
-        rstr += '\n\n'
-    return rstr
+            format_str += y
+            format_str += " "
+        format_str += '\n\n'
+    return format_str
 
 
 def get_point_types(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "采集点名称:"
-        rstr += x['name']
-        rstr += '\n'
-    return rstr
+        format_str += "采集点名称:"
+        format_str += x['name']
+        format_str += '\n'
+    return format_str
 
 
 def get_drill_plan(result):
-    rstr = ""
+    format_str = ""
     for x in result['message']:
         for y in x['plans']:
             url = "/preplans/get_plan_by_id?plan_id=" + y
@@ -146,210 +145,210 @@ def get_drill_plan(result):
             # print plan['message']
             insidex = plan['message']
             # print insidex
-            rstr += "演练名称:"
-            rstr += insidex['name']
-            rstr += "\n演练时间:"
-            rstr += insidex['time']
-            rstr += "\n演练地点:"
-            rstr += insidex['location']
-            rstr += "\n实施人员:"
-            rstr += insidex['operator']
-            rstr += "\n联系电话:"
-            rstr += insidex['phone']
-            rstr += "\n参演人员:"
-            rstr += insidex['operator']
-            rstr += "\n演练步骤:"
+            format_str += "演练名称:"
+            format_str += insidex['name']
+            format_str += "\n演练时间:"
+            format_str += insidex['time']
+            format_str += "\n演练地点:"
+            format_str += insidex['location']
+            format_str += "\n实施人员:"
+            format_str += insidex['operator']
+            format_str += "\n联系电话:"
+            format_str += insidex['phone']
+            format_str += "\n参演人员:"
+            format_str += insidex['operator']
+            format_str += "\n演练步骤:"
             for step in range(len(insidex['description'])):
-                rstr += "\n步骤" + str(step + 1) + ':'
-                rstr += insidex['description'][step]
+                format_str += "\n步骤" + str(step + 1) + ':'
+                format_str += insidex['description'][step]
 
-    return rstr
+    return format_str
 
 
 def get_stations_name(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += x
-        rstr += '\n'
-    return rstr
+        format_str += x
+        format_str += '\n'
+    return format_str
 
 
 def get_operation_logs(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "日期:"
-        rstr += x['timestamp']
-        rstr += '\n'
-        rstr += "处理人:"
-        rstr += x['operator']
-        rstr += '\n'
-        rstr += "操作信息:"
+        format_str += "日期:"
+        format_str += x['timestamp']
+        format_str += '\n'
+        format_str += "处理人:"
+        format_str += x['operator']
+        format_str += '\n'
+        format_str += "操作信息:"
         if x['operations'] != []:
-            rstr += x['operations'][0]['from'][0]['area'] + '-' + x['operations'][0]['from'][0]['station'] + '-' + \
+            format_str += x['operations'][0]['from'][0]['area'] + '-' + x['operations'][0]['from'][0]['station'] + '-' + \
                     x['operations'][0]['from'][0]['device_name'] + '-' + x['operations'][0]['from'][0]['title']
-        rstr += '\n'
-        rstr += "操作结果:"
-        rstr += x['is_all_success']
-        rstr += '\n\n'
-    return rstr
+        format_str += '\n'
+        format_str += "操作结果:"
+        format_str += x['is_all_success']
+        format_str += '\n\n'
+    return format_str
 
 
 def get_devices_by_parents_name(result):
-    rstr = "设备名称:\n"
+    format_str = "设备名称:\n"
     for x in result['response']:
-        rstr += x['name']
-        rstr += '\n'
-    return rstr
+        format_str += x['name']
+        format_str += '\n'
+    return format_str
 
 
 def get_children_with_warning_count(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += '名字:'
-        rstr += x['name']
-        rstr += '\n一般报警:'
-        rstr += str(x['warning_counts'][2])
-        rstr += '\n紧急报警:'
-        rstr += str(x['warning_counts'][1])
-        rstr += '\n严重报警:'
-        rstr += str(x['warning_counts'][0])
-        rstr += "\n\n"
+        format_str += '名字:'
+        format_str += x['name']
+        format_str += '\n一般报警:'
+        format_str += str(x['warning_counts'][2])
+        format_str += '\n紧急报警:'
+        format_str += str(x['warning_counts'][1])
+        format_str += '\n严重报警:'
+        format_str += str(x['warning_counts'][0])
+        format_str += "\n\n"
 
-    return rstr
+    return format_str
 
 
 def get_staff_from_district(result):
-    rstr = ""
+    format_str = ""
     for x in result["response"]:
-        rstr += "姓名:"
-        rstr += x['name']
-        rstr += "\n性别:"
-        rstr += x['gender']
-        rstr += "\n电话:"
-        rstr += x['cellphone']
-        rstr += "\n电邮:"
-        rstr += x['email']
-        rstr += "\n公司:"
-        rstr += x['company']
-        rstr += "\n类型:"
-        rstr += x['type']
-        rstr += "\n区域:"
-        rstr += x['district']['name']
-        rstr += "\n资格认证:"
+        format_str += "姓名:"
+        format_str += x['name']
+        format_str += "\n性别:"
+        format_str += x['gender']
+        format_str += "\n电话:"
+        format_str += x['cellphone']
+        format_str += "\n电邮:"
+        format_str += x['email']
+        format_str += "\n公司:"
+        format_str += x['company']
+        format_str += "\n类型:"
+        format_str += x['type']
+        format_str += "\n区域:"
+        format_str += x['district']['name']
+        format_str += "\n资格认证:"
         for y in x['qualification']:
-            rstr += y['name']
-    return rstr
+            format_str += y['name']
+    return format_str
 
 
 def get_received_messages(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "发件人:"
-        rstr += x['sender']
-        rstr += '\n'
-        rstr += "时间:"
-        rstr += x['timestamp']
-        rstr += '\n'
-        rstr += "标题:"
-        rstr += x['title']
-        rstr += '\n'
-        rstr += "内容:"
-        rstr += x['content']
-        rstr += '\n\n'
-    return rstr
+        format_str += "发件人:"
+        format_str += x['sender']
+        format_str += '\n'
+        format_str += "时间:"
+        format_str += x['timestamp']
+        format_str += '\n'
+        format_str += "标题:"
+        format_str += x['title']
+        format_str += '\n'
+        format_str += "内容:"
+        format_str += x['content']
+        format_str += '\n\n'
+    return format_str
 
 
 def get_user_operation_log(result):
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "操作人员:"
+        format_str += "操作人员:"
         for y in x['foreign1']:
-            rstr += y['name']
-            rstr += " "
-        rstr += "\n权限:"
+            format_str += y['name']
+            format_str += " "
+        format_str += "\n权限:"
         for y in x['foreign2']:
-            rstr += y['name']
-            rstr += " "
-        rstr += '\n操作内容:'
-        rstr += x['operation']
-        rstr += '\n操作时间:'
-        rstr += x['timestamp']
-        rstr += '\n\n'
-    return rstr
+            format_str += y['name']
+            format_str += " "
+        format_str += '\n操作内容:'
+        format_str += x['operation']
+        format_str += '\n操作时间:'
+        format_str += x['timestamp']
+        format_str += '\n\n'
+    return format_str
 
 
 def get_work_orders(result):
     status = {'0': '已发送', '1': '已确认', '2': '已处理', '3': '已完成'}
-    rstr = ""
+    format_str = ""
     for x in result['response']:
-        rstr += "工单编号:"
-        rstr += str(x['ID'])
-        rstr += "\n处理人:"
-        rstr += x['worker_name']
-        rstr += "\n地点:"
-        rstr = rstr + x['event_detail']['Local_Network'] + "-" + x['event_detail']['Area'] + '-' + x['event_detail'][
+        format_str += "工单编号:"
+        format_str += str(x['ID'])
+        format_str += "\n处理人:"
+        format_str += x['worker_name']
+        format_str += "\n地点:"
+        format_str = format_str + x['event_detail']['Local_Network'] + "-" + x['event_detail']['Area'] + '-' + x['event_detail'][
             'Local_Network'] + x['event_detail']['Station']
-        rstr += "\n产生时间:"
-        rstr += x['event_detail']['Start_Time']
-        rstr += "\n工单内容:"
-        rstr = rstr + x['event_detail']['Device'] + '-' + x['event_detail']['Point'] + '-' + x['event_detail'][
+        format_str += "\n产生时间:"
+        format_str += x['event_detail']['Start_Time']
+        format_str += "\n工单内容:"
+        format_str = format_str + x['event_detail']['Device'] + '-' + x['event_detail']['Point'] + '-' + x['event_detail'][
             'Warning_Type']
-        rstr += "\n当前状态:"
-        rstr += status[str(x['status']['current_status'])]
-        rstr += '\n\n'
-    return rstr
+        format_str += "\n当前状态:"
+        format_str += status[str(x['status']['current_status'])]
+        format_str += '\n\n'
+    return format_str
 
 
 def get_point_info_with_real_time(result):
-    rstr = ""
+    format_str = ""
     x = result['response']
-    rstr += "区域:"
-    rstr += x['point']['area']
-    rstr += "\n"
-    rstr += "设备:"
-    rstr += x['point']['device_name']
-    rstr += "\n"
-    rstr += "监测点:"
-    rstr += x['point']['name']
-    rstr += "\n"
-    rstr += "时间:"
-    rstr += x['point_real_time']['time']
-    rstr += "\n"
-    rstr += "数值:"
-    rstr = rstr + str(x['point_real_time']['value']) + x['point']['units']
-    rstr += "\n"
-    rstr += "状态:"
-    rstr += x['point']['warning_type']
-    rstr += "\n"
-    rstr += "\n\n"
+    format_str += "区域:"
+    format_str += x['point']['area']
+    format_str += "\n"
+    format_str += "设备:"
+    format_str += x['point']['device_name']
+    format_str += "\n"
+    format_str += "监测点:"
+    format_str += x['point']['name']
+    format_str += "\n"
+    format_str += "时间:"
+    format_str += x['point_real_time']['time']
+    format_str += "\n"
+    format_str += "数值:"
+    format_str = format_str + str(x['point_real_time']['value']) + x['point']['units']
+    format_str += "\n"
+    format_str += "状态:"
+    format_str += x['point']['warning_type']
+    format_str += "\n"
+    format_str += "\n\n"
 
-    return rstr
+    return format_str
 
 
 def get_warning(result):
-    rstr = ""
+    format_str = ""
     c = 0
     for x in result['response']:
         c += 1
-        rstr += "位置:"
-        rstr = rstr + x['Local_Network'] + x['Area'] + '-' + x['Station'] + '-' + x['Device']
-        rstr += '\n'
-        rstr += "监控点:"
-        rstr += x['Point']
-        rstr += '\n'
-        rstr += "数值:"
-        rstr = rstr + str(x['Value']) + x['Units']
-        rstr += '\n'
-        rstr += "开始时间:"
-        rstr += x['Start_Time']
-        rstr += '\n'
-        rstr += "类型:"
-        rstr += x['Warning_Type']
-        rstr += '\n'
-        rstr += "状态:"
-        rstr += x['Status']
-        rstr += '\n\n'
+        format_str += "位置:"
+        format_str = format_str + x['Local_Network'] + x['Area'] + '-' + x['Station'] + '-' + x['Device']
+        format_str += '\n'
+        format_str += "监控点:"
+        format_str += x['Point']
+        format_str += '\n'
+        format_str += "数值:"
+        format_str = format_str + str(x['Value']) + x['Units']
+        format_str += '\n'
+        format_str += "开始时间:"
+        format_str += x['Start_Time']
+        format_str += '\n'
+        format_str += "类型:"
+        format_str += x['Warning_Type']
+        format_str += '\n'
+        format_str += "状态:"
+        format_str += x['Status']
+        format_str += '\n\n'
         if c >= 8:
             break
 
-    return rstr
+    return format_str
