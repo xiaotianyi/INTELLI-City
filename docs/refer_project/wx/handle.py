@@ -21,7 +21,7 @@ class Handle(object):
 
                 replyMsg = reply.LocationMsg(toUser, fromUser, content)
                 print "Reply Message", dir(replyMsg)
-                print "Reply Message", replyMsg.dict()
+                print "Reply Message", replyMsg.__dict__
 
                 return replyMsg.send()
 
