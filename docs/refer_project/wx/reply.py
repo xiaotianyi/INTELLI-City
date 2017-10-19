@@ -48,7 +48,7 @@ class LocationMsg(Msg):
         <xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
         <FromUserName><![CDATA[fromUser]]></FromUserName>
-        <CreateTime>1351776360</CreateTime>
+        <CreateTime>{CreateTime}</CreateTime>
         <MsgType><![CDATA[location]]></MsgType>
         <Location_X>23.134521</Location_X>
         <Location_Y>113.358803</Location_Y>
@@ -56,6 +56,7 @@ class LocationMsg(Msg):
         <Label><![CDATA[位置信息]]></Label>
         </xml>
         """
+        print "haha1"
         return XmlForm.format(**self.__dict)
 
 
