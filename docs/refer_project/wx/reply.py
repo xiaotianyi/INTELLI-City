@@ -7,8 +7,10 @@ from wenpl.divide import showReply
 class Msg(object):
     def __init__(self):
         pass
+
     def send(self):
         return "success"
+
 
 class TextMsg(Msg):
     def __init__(self, toUserName, fromUserName, content):
@@ -17,7 +19,6 @@ class TextMsg(Msg):
         self.__dict['FromUserName'] = fromUserName
         self.__dict['CreateTime'] = int(time.time())
         self.__dict['Content'] = showReply(content)
-        # print showReply(content)
 
     def send(self):
         XmlForm = """
@@ -50,13 +51,14 @@ class LocationMsg(Msg):
         <FromUserName><![CDATA[fromUser]]></FromUserName>
         <CreateTime>{CreateTime}</CreateTime>
         <MsgType><![CDATA[location]]></MsgType>
-        <Location_X>![CDATA[23.134521]]</Location_X>
-        <Location_Y>![CDATA[113.358803]]</Location_Y>
+        <Location_X>23.134521</Location_X>
+        <Location_Y>113.358803</Location_Y>
         <Scale>![CDATA[20]]</Scale>
         <Label><![CDATA[位置信息]]></Label>
+        <MsgId>5832828233808572154</MsgId>
         </xml>
         """
-        print "haha1"
+        print "haha1", XmlForm
         return XmlForm.format(**self.__dict)
 
 
