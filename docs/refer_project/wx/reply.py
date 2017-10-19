@@ -53,11 +53,11 @@ class LocationMsg(Msg):
         <MsgType><![CDATA[location]]></MsgType>
         <Location_X>23.134521</Location_X>
         <Location_Y>113.358803</Location_Y>
-        <Scale>![CDATA[20]]</Scale>
+        <Scale>20</Scale>
         <Label><![CDATA[位置信息]]></Label>
-        <MsgId>5832828233808572154</MsgId>
         </xml>
         """
+        # < MsgId > 5832828233808572154 < / MsgId >
         print "haha1", XmlForm
         return XmlForm.format(**self.__dict)
 
