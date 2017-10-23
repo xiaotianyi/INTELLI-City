@@ -33,33 +33,31 @@ class TextMsg(Msg):
         return XmlForm.format(**self.__dict)
 
 
-class LocationMsg(Msg):
-    def __init__(self, toUserName, fromUserName, content):
-        self.__dict = dict()
-        self.__dict['ToUserName'] = toUserName
-        self.__dict['FromUserName'] = fromUserName
-        self.__dict['CreateTime'] = int(time.time())
-        # self.__dict['CreateTime'] = str(time.time())
-        # self.__dict['Content'] = show_reply(content)
-        # print showReply(content)
-
-    def send(self):
-        print "haha"
-        XmlForm = """
-        <xml>
-        <ToUserName><![CDATA[{ToUserName}]]></ToUserName>
-        <FromUserName><![CDATA[{FromUserName}]]></FromUserName>
-        <CreateTime>{CreateTime}</CreateTime>
-        <MsgType><![CDATA[location]]></MsgType>
-        <Location_X>23.134521</Location_X>
-        <Location_Y>113.358803</Location_Y>
-        <Label><![CDATA[位置信息]]></Label>
-        </xml>
-        """
-        # <Scale>20</Scale>
-        # < MsgId > 5832828233808572154 < / MsgId >
-        print "haha1", XmlForm
-        return XmlForm.format(**self.__dict)
+# class LocationMsg(Msg):
+#     def __init__(self, toUserName, fromUserName, content):
+#         self.__dict = dict()
+#         self.__dict['ToUserName'] = toUserName
+#         self.__dict['FromUserName'] = fromUserName
+#         self.__dict['CreateTime'] = int(time.time())
+#         # self.__dict['CreateTime'] = str(time.time())
+#         # self.__dict['Content'] = show_reply(content)
+#         # print showReply(content)
+#
+#     def send(self):
+#         XmlForm = """
+#         <xml>
+#         <ToUserName><![CDATA[{ToUserName}]]></ToUserName>
+#         <FromUserName><![CDATA[{FromUserName}]]></FromUserName>
+#         <CreateTime>{CreateTime}</CreateTime>
+#         <MsgType><![CDATA[location]]></MsgType>
+#         <Location_X>23.134521</Location_X>
+#         <Location_Y>113.358803</Location_Y>
+#         <Label><![CDATA[位置信息]]></Label>
+#         </xml>
+#         """
+#         # <Scale>20</Scale>
+#         # < MsgId > 5832828233808572154 < / MsgId >
+#         return XmlForm.format(**self.__dict)
 
 
 class ImageMsg(Msg):
