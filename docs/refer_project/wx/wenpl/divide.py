@@ -159,11 +159,11 @@ def revranking(count):
 
 def excuteREST(p, rp, st, para, paraDict, qType, remember):
 
-    #执行查询
-    # p:正排序后的store匹配度列表
-    # rp:反排序后的store匹配度列表
-    # st:store字典
-    # para:输入语句中的参数列表
+    # 执行查询
+    # p: 正排序后的store匹配度列表
+    # rp: 反排序后的store匹配度列表
+    # st: store字典
+    # para: 输入语句中的参数列表
     # paraDict: store中参数列表
     # print showList()
     # p[[[],[]],[]]
